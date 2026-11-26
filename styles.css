@@ -1835,3 +1835,119 @@ button, input {
     border-color: #cbd5e1;
   }
 }
+
+
+/* ==================== SHOOTING ORDER PHASE BANNERS & STEP RIBBONS ==================== */
+.phase-banner {
+  grid-column: 1 / -1;
+  border-radius: 14px;
+  padding: 14px 18px;
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  border: 1px solid var(--blue-border);
+  background: linear-gradient(90deg, #eff6ff 0%, #dbeafe 100%);
+  color: #1e3a8a;
+}
+
+.phase-banner.phase-indoor {
+  background: linear-gradient(90deg, #f8fafc 0%, #e0f2fe 100%);
+  border-color: #bae6fd;
+  color: #0c4a6e;
+}
+
+.phase-banner.phase-oic {
+  background: linear-gradient(90deg, #ecfdf5 0%, #d1fae5 100%);
+  border-color: #a7f3d0;
+  color: #065f46;
+}
+
+.phase-banner.phase-branch {
+  background: linear-gradient(90deg, #f5f3ff 0%, #ede9fe 100%);
+  border-color: #ddd6fe;
+  color: #5b21b6;
+}
+
+.phase-banner-title {
+  margin: 0;
+  font-size: 0.98rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.phase-banner-sub {
+  margin: 2px 0 0;
+  font-size: 0.8rem;
+  opacity: 0.88;
+  font-weight: 500;
+}
+
+.step-ribbon {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 9px 13px;
+  background: #0f172a;
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.step-ribbon.ribbon-oic {
+  background: #065f46;
+}
+
+.step-ribbon.ribbon-branch {
+  background: #5b21b6;
+}
+
+.step-ribbon-left {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.step-num-badge {
+  background: #f59e0b;
+  color: #0f172a;
+  font-weight: 800;
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.02em;
+}
+
+.step-teacher-pill {
+  background: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.73rem;
+  font-weight: 600;
+}
+
+.detail-step-banner {
+  background: #0f172a;
+  color: #ffffff;
+  padding: 10px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.detail-step-banner.ribbon-oic {
+  background: #065f46;
+}
+
+.detail-step-banner.ribbon-branch {
+  background: #5b21b6;
+}

@@ -173,28 +173,28 @@ window.SHOTBOOK_DATA = {
     ],
     shootingSchedule: [
       {
-        time: "TRƯỜNG CHÍNH • Sáng Chặng 1: Ngoài trời sớm (07:10 – 09:00) • Nắng mát, Tắt đèn LED",
-        location: "Cổng trường → Sân chào cờ → Sân bóng rổ → English Tree → English Zone → Vườn trường",
-        scenes: "① PC 01 Cổng trường (Cô Ngân • 07:10) → ② PC 03 Chào cờ + KẾT (Cô Hạnh, Cô Tần • 07:25) → ③ PC 15 Bóng rổ (Cô Thủy Tiên • 07:55) → ④ PC 05 ⭐ Tree (Cô Ngân • 08:15) → ⑤ PC 04 ⭐ Zone (Cô Cúc • 08:30) → ⑥ PC 10 Vườn & Pin (Cô Đạm • 08:45)",
-        tip: "Xong sạch 6 cảnh ngoài trời trước 9h nắng gắt! Không cần các bạn học sinh cố định — cảnh nào HS của cô phụ trách cảnh đó nói trực tiếp luôn. Sigma f/5.6–f/8 ngoài nắng, f/2.8–f/4 bóng râm."
+        time: "CHẶNG 1 • TRƯỜNG CHÍNH — Sáng Ngoài trời (07:20 – 09:00) • Tắt đèn LED",
+        location: "Cây Tiếng Anh → Sân chào cờ (07:40) → Cổng trường (08:10) → Sân bóng rổ → Vườn trường",
+        scenes: "① PC 05 ⭐ Cây Tiếng Anh (Cô Ngân • 07:20) → ② PC 03 Chào cờ + KẾT (Cô Hạnh, Cô Tần • 07:40 đúng chuông xuống sân) → ③ PC 01 Cổng trường (Cô Ngân • 08:10 vãn phụ huynh) → ④ PC 15 Bóng rổ (Cô Thủy Tiên • 08:25) → ⑤ PC 10 Vườn & Thu pin (Cô Đạm • 08:45)",
+        tip: "Quay PC 01 Cổng trường lúc 08:10 sau khi phụ huynh đưa đón đã vãn hẳn để cổng vắng sạch, không còi xe mà nắng sớm vẫn dịu đẹp! Sigma f/5.6–f/8 ngoài nắng, f/2.8–f/4 bóng râm."
       },
       {
-        time: "TRƯỜNG CHÍNH • Sáng Chặng 2: Trong nhà (09:00 – 10:55) • Bật đèn 30–35%, 4K 25p (1/50s)",
-        location: "Cầu thang → Lớp học → Hành lang → Thư viện (gộp Cảnh R5 Tổ chuyên môn!)",
-        scenes: "⑦ PC 09 Cầu thang (Cô Đạm • 09:00) → ⑧ PC 02 Chào lớp (Cô Thảo • 09:15) → ⑨ PC 07 English Corner (Cô Nhung • 09:35) → ⑩ PC 06 ⭐ English Passport (Cô Ngân • 09:50) → ⑪ PC 08 Thư viện + R5 Tổ chuyên môn soạn bài (Cô Cúc, Cô Trang + Cô Ngân • 10:20–10:55)",
-        tip: "Cảnh R5 (10 phút ngay tại Thư viện): 3–4 cô ngồi xem sách GDPT 2018, laptop, bộ Flashcard & sổ Passport (không cần thu thoại vì chạy dưới Lời bình VO!)."
+        time: "CHẶNG 2 • TRƯỜNG CHÍNH — Sáng Trong nhà & English Zone cuối sáng (09:00 – 11:00) • Bật đèn 30–35%",
+        location: "Cầu thang & tường khẩu hiệu → Lớp học → Hành lang → Thư viện (gộp Cảnh R5) → English Zone",
+        scenes: "⑥ PC 09 Cầu thang & tường khẩu hiệu (Cô Đạm • 09:00) → ⑦ PC 02 Chào đầu giờ (Cô Thảo • 09:15) → ⑧ PC 07 English Corner (Cô Nhung • 09:30) → ⑨ PC 06 ⭐ English Passport (Cô Ngân • 09:45) → ⑩ PC 08 Thư viện (Cô Cúc, Cô Trang • 10:10) → ⑪ Cảnh R5 Tổ chuyên môn (Cô Cúc, Cô Trang, Cô Ngân • 10:25) → ⑫ PC 04 ⭐ English Zone cuối sáng (Cô Cúc • 10:45)",
+        tip: "Cảnh R5 quay gọn ngay tại Thư viện sau PC 08 (không cần thu thoại vì chạy dưới Lời bình VO), sau đó Cô Cúc ra quay luôn PC 04 English Zone cuối buổi sáng!"
       },
       {
-        time: "TRƯỜNG CHÍNH • Trưa (11:05 – 11:50) & ĐẦU CHIỀU BẮT BUỘC (14:00 – 14:55): LỚP OIC!",
-        location: "Phòng ăn bán trú → Nghỉ trưa SẠC ĐẦY PIN tại Trường chính → Lớp học OIC (Sink & Float)",
-        scenes: "⑫ PC 13 Bán trú (Cô Thủy Tiên • 11:05–11:50) → [Nghỉ trưa sạc pin] → ⑬ LỚP OIC ⭐ Thí nghiệm Sink & Float (Trường chính • 14:00–14:55)",
-        tip: "Lớp OIC: Dùng bát/chậu nhựa TRONG SUỐT để quay ngang 50mm f/2.8 thấy rõ vật chìm/nổi! Thử trước cả 8 vật & sửa câu thoại bỏ 'filled with air' cho bút chì/thước nhựa (dùng 'because it's light')."
+        time: "CHẶNG 3 • TRƯỜNG CHÍNH — Trưa Bán trú (11:05) & LỚP OIC Bắt buộc chiều (14:25 – 15:00)",
+        location: "Phòng ăn bán trú → Nghỉ trưa SẠC ĐẦY PIN → Phòng học Lớp OIC (Sink & Float)",
+        scenes: "⑬ PC 13 Bán trú (Cô Thủy Tiên • 11:05–11:50, quay khay cơm TRƯỚC khi ăn 5 phút) → [Nghỉ trưa sạc pin] → ⑭ LỚP OIC ⭐ Thí nghiệm Sink & Float (GV & Trợ giảng OIC • 14:25–15:00)",
+        tip: "Lớp OIC: Bắt buộc dùng bát/chậu nhựa TRONG SUỐT để quay ngang 50mm f/2.8 thấy rõ vật chìm/nổi! Thả thử trước 8 vật & sửa câu thoại bỏ 'filled with air' cho bút chì/thước nhựa (dùng 'because it is light')."
       },
       {
-        time: "PHÂN HIỆU (Chiều 15:10 – 17:00 | Hoặc tách sang sáng hôm sau 07:30 – 10:30 cho thong thả)",
-        location: "Lớp học → Phòng Âm nhạc → Hành lang → Sân ra chơi → Cây Tiếng Anh → Sân tập thể",
-        scenes: "⑭ PC 11 ⭐ Tiết học trò chơi (Cô Lan, Cô Lam • 15:10) → ⑮ PC 14 ⭐ Âm nhạc (Cô Phương • 15:30) → ⑯ PC 06 ⭐ Passport (Cô Lan, Cô Lam • 15:50) → ⑰ PC 12 Ra chơi (Cô Lan, Cô Lam • 16:05) → ⑱ PC 05 ⭐ Tree (Cô Lan, Cô Lam • 16:20) → ⑲ PC 03 Chào cờ/tập thể + KẾT nửa Phân hiệu (Cô Lan, Cô Lam, Cô Hạnh, Cô Tần • 16:35)",
-        tip: "Không cần quay riêng MC cố định — mỗi cảnh học sinh của đúng cô phụ trách nói tự nhiên! Dặn Cô Lan, Cô Lam & Cô Phương xếp sẵn lớp từ 15:00 để chạy liên hoàn kịp trước 17:00."
+        time: "CHẶNG 4 • PHÂN HIỆU — Sáng Thứ 2, ngày 30/11 (07:40 – 10:30)",
+        location: "Sân Chào cờ (07:40) → Cây Tiếng Anh → Sân ra chơi → Lớp học → Phòng Âm nhạc → Hành lang",
+        scenes: "⑮ PC 03 Chào cờ sáng T2 + KẾT Phân hiệu (Cô Lan, Cô Lam, Cô Hạnh, Cô Tần • 07:40) → ⑯ PC 05 ⭐ Cây Tiếng Anh (Cô Lan, Cô Lam • 08:15) → ⑰ PC 12 Giờ ra chơi (Cô Lan, Cô Lam • 08:35) → ⑱ PC 11 ⭐ Tiết TN&XH (Cô Lan, Cô Lam • 08:55) → ⑲ PC 14 ⭐ Tiết Âm nhạc (Cô Phương • 09:25) → ⑳ PC 06 ⭐ Passport (Cô Lan, Cô Lam • 09:55)",
+        tip: "Quay trọn buổi sáng T2 30/11 cực thong thả: đúng 07:40 Chào cờ đầu tuần, xong sạch 3 cảnh ngoài trời trước 09:00 nắng gắt rồi vào lớp quay PC 11, PC 14 và kết thúc trước 10:30!"
       }
     ]
   },
@@ -727,7 +727,7 @@ window.SHOTBOOK_DATA = {
       duration: "25 giây",
       durationSec: 25,
       image: "./images/scene-09.jpg",
-      location: "Trong nhà — Cầu thang & Tường hành lang 2 điểm trường",
+      location: "Trong nhà — Cầu thang & Tường khẩu hiệu 2 điểm trường",
       environment: "indoor",
       isHighlight: false,
       needsSlowMo: true,

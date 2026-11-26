@@ -203,7 +203,7 @@ window.SPECIAL_SCENES = [
     code: "KHÚC 1 • CẢNH R5 (MỚI)",
     badgeColor: "badge-blue",
     title: "Giáo viên chuẩn bị bài, học liệu & sinh hoạt tổ chuyên môn",
-    schedule: "Trường chính • Thư viện (10:40 – 10:50) • Cô Cúc, Cô Trang + Cô Ngân",
+    schedule: "Trường chính • Thư viện (10:25 – 10:45) • Cô Cúc, Cô Trang + Cô Ngân",
     image: "./images-oic-r5/r5_teachers_prep.jpg",
     purpose: "Hình ảnh minh họa dưới Lời bình VO R5 (Cột H Excel): \"To bring that vision into practice, connecting Vietnam's 2018 General Education Curriculum with suitable international educational approaches...\" — Không cần thu tiếng trực tiếp!",
     cameraSpec: "Sigma 24mm f/3.5 (toàn bàn 3 cô) + 45mm f/2.8 (cận tay xếp Flashcard, sổ Passport, giáo án)",
@@ -216,7 +216,7 @@ window.SPECIAL_SCENES = [
     code: "KHÚC 3 • LỚP OIC — STEP 1 (PREDICT)",
     badgeColor: "badge-green",
     title: "Lớp OIC: Giới thiệu đồ vật & Dự đoán Chìm hay Nổi (Sink & Float)",
-    schedule: "Trường chính (BẮT BUỘC 14:00 – 14:55) • Phòng học OIC",
+    schedule: "Trường chính (BẮT BUỘC 14:25 – 15:00) • Phòng học OIC",
     image: "./images-oic-r5/oic_step1_predict.jpg",
     purpose: "Mở đầu bằng Lời bình VO R14, sau đó cô giơ bát nước trong suốt, cái thìa kim loại và ô tô đồ chơi nhựa rỗng hỏi học sinh dự đoán vật nào chìm, vật nào nổi.",
     cameraSpec: "Sigma 24mm f/3.5 (cô & bảng) + 35mm f/2.8 (cận 2–3 học sinh giơ tay đoán) • 4K 25p (1/50s)",
@@ -229,7 +229,7 @@ window.SPECIAL_SCENES = [
     code: "KHÚC 3 • LỚP OIC — STEP 2 (TEST & OBSERVE)",
     badgeColor: "badge-green",
     title: "Lớp OIC: Nhóm 6 bé tự thả 6 vật vào bát nước TRONG SUỐT",
-    schedule: "Trường chính (14:15 – 14:30) • BẮT BUỘC dùng bát/chậu trong suốt!",
+    schedule: "Trường chính (14:35 – 14:48) • BẮT BUỘC dùng bát/chậu trong suốt!",
     image: "./images-oic-r5/oic_step2_test_water.jpg",
     purpose: "Cảnh đắt giá nhất của toàn Khúc 3: hạ máy quay ngang mép bát nước trong suốt để thấy rõ chìa khóa/hòn đá chìm xuống đáy, bút chì/thước nhựa nổi trên mặt nước! (Nhớ thả thử trước cả 8 vật!).",
     cameraSpec: "Sigma 50mm f/2.8 (1080p 50p cận bát nước!) + 24mm f/4 (cô & trợ giảng hỏi từng nhóm 6 bé)",
@@ -242,7 +242,7 @@ window.SPECIAL_SCENES = [
     code: "KHÚC 3 • LỚP OIC — STEP 3 & 4 (PRESENT & WRAP-UP)",
     badgeColor: "badge-green",
     title: "Lớp OIC: Nhóm thuyết trình kết quả & Cả lớp tổng kết vỗ tay",
-    schedule: "Trường chính (14:30 – 14:55) • Chọn 1 nhóm nói to rõ nhất",
+    schedule: "Trường chính (14:48 – 15:00) • Chọn 1 nhóm nói to rõ nhất",
     image: "./images-oic-r5/oic_step3_present_wrapup.jpg",
     purpose: "Lưu ý sửa chuẩn khoa học: KHÔNG nói 'filled with air' cho bút chì/que gỗ/thước nhựa — chỉ nói 'because it is light' (vật nổi) và 'because it is heavy and solid' (vật chìm)! Kết bằng VO R17 + cả lớp đồng thanh Wrap-up.",
     cameraSpec: "Sigma 28mm f/3.5 (nhóm đứng báo cáo) + 18mm f/3.5 (toàn lớp vỗ tay) • 4K 25p (1/50s)",
@@ -250,4 +250,35 @@ window.SPECIAL_SCENES = [
     lightSpec: "Bật đèn LED nhỏ 35% góc 45° • Đặt điện thoại ghi âm gần nhóm thuyết trình",
     voText: "Thoại chuẩn KH + VO R17: \"The key sinks because it is heavy and solid. The pencil floats because it is light.\" → \"What did we learn today?\" — \"Some things float. Some things sink!\""
   }
+];
+
+// Lịch quay thực tế theo đúng thứ tự bấm máy (20 bước — 4 chặng: Trường chính + Phân hiệu T2 30/11)
+window.SHOOTING_ORDER = [
+  // CHẶNG 1: TRƯỜNG CHÍNH — SÁNG NGOÀI TRỜI (07:20 – 09:00)
+  { step: 1, phaseId: "p1", phaseTitle: "CHẶNG 1 • TRƯỜNG CHÍNH — SÁNG NGOÀI TRỜI (07:20 – 09:00)", phaseSub: "Tắt đèn LED • Sigma f/5.6–f/8 ngoài nắng (f/2.8–f/4 bóng râm)", phaseColor: "phase-main", campus: "Trường chính", campusKey: "main", time: "07:20 – 07:35", teacher: "Cô Ngân", sceneId: 5, kind: "scene", labelOverride: "PC 05: Cây Tiếng Anh (Trường chính)", quickNote: "Quay trong sân trước chuông 07:40 • Dưới tán râm mở 50mm f/2.8 xóa phông" },
+  { step: 2, phaseId: "p1", campus: "Trường chính", campusKey: "main", time: "07:40 – 08:10", teacher: "Cô Hạnh, Cô Tần", sceneId: 3, kind: "scene", labelOverride: "PC 03: Chào cờ + Gộp KẾT (Trường chính)", quickNote: "Đúng 07:40 rung chuông xuống sân • Gộp quay đội hình vẫy tay KẾT (PC 16)" },
+  { step: 3, phaseId: "p1", campus: "Trường chính", campusKey: "main", time: "08:10 – 08:25", teacher: "Cô Ngân", sceneId: 1, kind: "scene", labelOverride: "PC 01: Cổng trường & Lời chào mở đầu", quickNote: "Quay sau 08:10 khi phụ huynh đưa đón đã vãn hẳn, cổng vắng sạch & nắng sớm đẹp" },
+  { step: 4, phaseId: "p1", campus: "Trường chính", campusKey: "main", time: "08:25 – 08:45", teacher: "Cô Thủy Tiên (+ Thầy TD)", sceneId: 15, kind: "scene", labelOverride: "PC 15: Bóng rổ & Thể dục", quickNote: "Sigma 18mm f/5.6–f/8 + 1080p 50fps • Góc thấp hất lên trời cảnh chụm tay hô" },
+  { step: 5, phaseId: "p1", campus: "Trường chính", campusKey: "main", time: "08:45 – 09:00", teacher: "Cô Đạm", sceneId: 10, kind: "scene", labelOverride: "PC 10: Vườn trường & Trạm thu pin", quickNote: "Góc bóng râm vườn hoa hồng + cận 50mm tay HS bỏ viên pin AA cũ vào hộp" },
+
+  // CHẶNG 2: TRƯỜNG CHÍNH — SÁNG TRONG NHÀ & ENGLISH ZONE CUỐI SÁNG (09:00 – 11:00)
+  { step: 6, phaseId: "p2", phaseTitle: "CHẶNG 2 • TRƯỜNG CHÍNH — SÁNG TRONG NHÀ & ENGLISH ZONE (09:00 – 11:00)", phaseSub: "Bật đèn LED nhẹ 30–35% (5500K góc 45°) • 4K 25fps (1/50s chống sọc đèn) • Sigma f/2.8–f/3.5", phaseColor: "phase-indoor", campus: "Trường chính", campusKey: "main", time: "09:00 – 09:15", teacher: "Cô Đạm", sceneId: 9, kind: "scene", labelOverride: "PC 09: Cầu thang & tường khẩu hiệu", quickNote: "Sigma 18mm rộng nhất (SteadyShot OFF) • Góc từ chiếu nghỉ & đi theo HS" },
+  { step: 7, phaseId: "p2", campus: "Trường chính", campusKey: "main", time: "09:15 – 09:30", teacher: "Cô Thảo", sceneId: 2, kind: "scene", labelOverride: "PC 02: Chào buổi sáng đầu giờ", quickNote: "18mm lia cô bước vào + 35mm f/2.8 cận bé trả lời • Đặt thêm ĐT ghi âm trên bàn" },
+  { step: 8, phaseId: "p2", campus: "Trường chính", campusKey: "main", time: "09:30 – 09:45", teacher: "Cô Nhung", sceneId: 7, kind: "scene", labelOverride: "PC 07: Góc English Corner", quickNote: "Giữ cò Lock trượt ngang dọc bảng Mind Map + 35mm f/2.8 bé thuyết trình tranh cá heo" },
+  { step: 9, phaseId: "p2", campus: "Trường chính", campusKey: "main", time: "09:45 – 10:10", teacher: "Cô Ngân", sceneId: 6, kind: "scene", labelOverride: "PC 06 ⭐: English Passport & Trao chứng nhận", quickNote: "ĐIỂM NHẤN SỐ 1 • 28mm f/3.5 thoại 2 người + 50mm f/2.8 siêu cận ký sổ & trao giải" },
+  { step: 10, phaseId: "p2", campus: "Trường chính", campusKey: "main", time: "10:10 – 10:25", teacher: "Cô Cúc, Cô Trang", sceneId: 8, kind: "scene", labelOverride: "PC 08: Thư viện đọc sách", quickNote: "24mm f/3.2 lướt qua mép kệ sách + 50mm f/2.8 cận truyện The Very Hungry Caterpillar" },
+  { step: 11, phaseId: "p2", campus: "Trường chính", campusKey: "main", time: "10:25 – 10:45", teacher: "Cô Cúc, Cô Trang, Cô Ngân", specialId: "r5", kind: "special", labelOverride: "Cảnh R5 (MỚI): Tổ chuyên môn soạn bài", quickNote: "Gộp ngay tại Thư viện • Sách GDPT 2018, laptop, Flashcard, sổ Passport (không cần thu thoại)" },
+  { step: 12, phaseId: "p2", campus: "Trường chính", campusKey: "main", time: "10:45 – 11:00", teacher: "Cô Cúc", sceneId: 4, kind: "scene", labelOverride: "PC 04 ⭐: Khu English Zone (Cuối sáng)", quickNote: "Xếp cuối sáng theo lịch cô • 50mm f/2.8 cận tay xoay vòng quay, chữ HAPPY & thẻ butterfly" },
+
+  // CHẶNG 3: TRƯỜNG CHÍNH — TRƯA BÁN TRÚ & LỚP OIC CHIỀU (11:05 – 15:00)
+  { step: 13, phaseId: "p3", phaseTitle: "CHẶNG 3 • TRƯỜNG CHÍNH — TRƯA BÁN TRÚ & LỚP OIC CHIỀU (11:05 – 15:00)", phaseSub: "Nghỉ trưa SẠC ĐẦY PIN máy ảnh, RS 4 Mini & đèn giữa 11:50 – 14:25", phaseColor: "phase-oic", campus: "Trường chính", campusKey: "main", time: "11:05 – 11:50", teacher: "Cô Thủy Tiên", sceneId: 13, kind: "scene", labelOverride: "PC 13: Bữa ăn bán trú (Happy Lunch)", quickNote: "TỚI SỚM 5 PHÚT TRƯỚC KHI ĂN để trượt cận 50mm f/2.8 dãy khay cơm sạch đẹp nguyên vẹn!" },
+  { step: 14, phaseId: "p3", campus: "Trường chính", campusKey: "main", time: "14:25 – 15:00", teacher: "GV & Trợ giảng OIC", specialId: "oic_all", kind: "oic", labelOverride: "LỚP OIC ⭐: Thí nghiệm Sink & Float (3 bước)", quickNote: "BẮT BUỘC 14:25–15:00 • Dùng BÁT TRONG SUỐT (50mm f/2.8 ngang mép bát) • Không nói 'filled with air'" },
+
+  // CHẶNG 4: PHÂN HIỆU — SÁNG THỨ 2 NGÀY 30/11 (07:40 – 10:30)
+  { step: 15, phaseId: "p4", phaseTitle: "CHẶNG 4 • PHÂN HIỆU — SÁNG THỨ 2, NGÀY 30/11 (07:40 – 10:30)", phaseSub: "Quay 3 cảnh ngoài trời lúc nắng sáng mát (07:40–08:55) → Vào lớp quay PC 11, PC 14 & PC 06", phaseColor: "phase-branch", campus: "Phân hiệu (T2 30/11)", campusKey: "branch", time: "07:40 – 08:15", teacher: "Cô Lan, Cô Lam, Cô Hạnh, Cô Tần", sceneId: 16, kind: "scene", labelOverride: "PC 03 Chào cờ sáng T2 + KẾT Phân hiệu", quickNote: "Đúng 07:40 Chào cờ đầu tuần • Quay 18mm đi lùi nâng gimbal ghép Split Screen 50/50 với Trường chính" },
+  { step: 16, phaseId: "p4", campus: "Phân hiệu (T2 30/11)", campusKey: "branch", time: "08:15 – 08:35", teacher: "Cô Lan, Cô Lam", sceneId: 5, kind: "scene", labelOverride: "PC 05 ⭐: Cây Tiếng Anh (Phân hiệu)", quickNote: "Quay cú Match Cut 50mm f/2.8 buông tay sau khi treo lá + 2–3 HS cầm lá đọc thông điệp" },
+  { step: 17, phaseId: "p4", campus: "Phân hiệu (T2 30/11)", campusKey: "branch", time: "08:35 – 08:55", teacher: "Cô Lan, Cô Lam", sceneId: 12, kind: "scene", labelOverride: "PC 12: Giờ ra chơi (Ghế đá & Cầu lông)", quickNote: "24mm f/4 (1080p 50fps) để các con chơi tự nhiên 2 phút rồi quay 2 câu rủ chơi ngắn" },
+  { step: 18, phaseId: "p4", campus: "Phân hiệu (T2 30/11)", campusKey: "branch", time: "08:55 – 09:25", teacher: "Cô Lan, Cô Lam", sceneId: 11, kind: "scene", labelOverride: "PC 11 ⭐: Tiết TN&XH (Parts of a Plant)", quickNote: "Giữ nguyên tại Phân hiệu • Chậu cây thật + 3 HS trả lời + 24mm f/4 góc 45° nhóm vẽ giấy A3" },
+  { step: 19, phaseId: "p4", campus: "Phân hiệu (T2 30/11)", campusKey: "branch", time: "09:25 – 09:55", teacher: "Cô Phương (Âm nhạc)", sceneId: 14, kind: "scene", labelOverride: "PC 14 ⭐: Tiết Âm nhạc (Little Music Star)", quickNote: "50mm f/2.8 cận trống/tambourine + 35mm f/2.8 Half-Orbit quanh bé lắc maracas biểu diễn" },
+  { step: 20, phaseId: "p4", campus: "Phân hiệu (T2 30/11)", campusKey: "branch", time: "09:55 – 10:25", teacher: "Cô Lan, Cô Lam", sceneId: 6, kind: "scene", labelOverride: "PC 06 ⭐: English Passport (Phân hiệu)", quickNote: "Hỏi đáp môn Music, 50mm f/2.8 cận ký sổ & khoe trang sổ kín chữ ký — Xong gọn trước 10:30!" }
 ];

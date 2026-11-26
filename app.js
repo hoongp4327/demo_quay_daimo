@@ -4,7 +4,16 @@
   const DATA = window.SHOTBOOK_DATA;
   const EXTRA_SHOTS = window.EXTRA_SHOTS || [];
   const SPECIAL_SCENES = window.SPECIAL_SCENES || [];
+  const SHOOTING_ORDER = window.SHOOTING_ORDER || [];
   const STORAGE_KEY = "daimo_shotbook_done_v1";
+
+  const SPECIAL_SHOTS = [
+    { id: "sp-r5-1", stepKey: "r5", campus: "Trường chính (Thư viện)", framing: "Trung rộng (Sigma 24mm • f/3.5)", move: "RS 4 Mini PF trượt ngang chậm quanh bàn 3 cô", desc: "3–4 cô ngồi xem sách GDPT 2018, laptop, giáo án, trao đổi chuyên môn tự nhiên (không cần thu thoại — chạy dưới VO R5)." },
+    { id: "sp-r5-2", stepKey: "r5", campus: "Trường chính (Thư viện)", framing: "Cận cảnh (Sigma 45mm • f/2.8)", move: "RS 4 Mini giữ cò Lock đẩy cận tay xếp Flashcard & sổ Passport", desc: "Quay cận bàn tay cô sắp xếp bộ thẻ Flashcard, sổ English Passport mẫu và ghi chú bài giảng." },
+    { id: "sp-oic-1", stepKey: "oic_all", campus: "Trường chính (OIC 14:25)", framing: "Trung rộng & Cận (24–35mm • f/2.8–f/3.5)", move: "RS 4 Mini PF lia từ cô sang các cánh tay giơ lên dự đoán", desc: "Step 1 (Predict): Cô giơ bát nước trong suốt, cái thìa và ô tô đồ chơi hỏi đoán vật nào chìm/nổi." },
+    { id: "sp-oic-2", stepKey: "oic_all", campus: "Trường chính (OIC 14:35)", framing: "Siêu cận ngang mép bát (50mm • f/2.8 • 50p)", move: "RS 4 Mini xách thấp Briefcase giữ cò Lock đẩy chậm vào bát nước", desc: "Step 2 (Test & Observe): Nhóm 6 bé thả 6 vật vào BÁT NHỰA TRONG SUỐT — thấy rõ chìa khóa/đá chìm, bút chì/thước nổi!" },
+    { id: "sp-oic-3", stepKey: "oic_all", campus: "Trường chính (OIC 14:48)", framing: "Trung nhóm báo cáo (28mm) + Toàn lớp (18mm)", move: "RS 4 Mini giữ cò Lock tĩnh nhóm báo cáo → PF lia cả lớp vỗ tay", desc: "Step 3 & 4 (Present & Wrap-up): Nhóm nói chuẩn ('because it is light' / 'heavy and solid', KHÔNG nói 'filled with air') + cả lớp đồng thanh Wrap-up." }
+  ];
 
   function getExtraShot(sceneId) {
     return EXTRA_SHOTS.find((x) => x.sceneId === sceneId) || null;
@@ -12,11 +21,12 @@
 
   const state = {
     activeTab: "storyboard",
+    orderMode: "schedule", // 'schedule' (1 -> 20) | 'script' (PC 01 -> 16)
     viewMode: "grid", // 'grid' | 'detail'
     filter: "all",
     search: "",
     checklistFilter: "all",
-    activeModalSceneId: null,
+    activeModalKey: null, // { type: 'step', step: 1..20 } | { type: 'scene', id: 1..16 } | { type: 'special', id: 'r5'|'oic_all' }
     doneShots: loadDoneShots()
   };
 
@@ -52,12 +62,19 @@
   }
 
   function getTotalShots() {
-    return DATA.scenes.reduce((sum, s) => sum + s.shots.length, 0);
+    return DATA.scenes.reduce((sum, s) => sum + s.shots.length, 0) + SPECIAL_SHOTS.length;
   }
 
   function getSceneProgress(scene) {
     const total = scene.shots.length;
     const done = scene.shots.filter((sh) => state.doneShots.has(sh.id)).length;
+    return { done, total, isComplete: done === total && total > 0 };
+  }
+
+  function getSpecialProgress(specialKey) {
+    const shots = SPECIAL_SHOTS.filter((sh) => sh.stepKey === specialKey);
+    const total = shots.length;
+    const done = shots.filter((sh) => state.doneShots.has(sh.id)).length;
     return { done, total, isComplete: done === total && total > 0 };
   }
 
@@ -185,8 +202,8 @@
     updateProgressUI();
     renderScenes();
     renderChecklist();
-    if (state.activeModalSceneId !== null) {
-      renderModalContent(state.activeModalSceneId);
+    if (state.activeModalKey !== null) {
+      renderModalContent(state.activeModalKey);
     }
   }
 
@@ -199,6 +216,10 @@
       if (state.filter === "indoor" && !scene.needsLight) return false;
       if (state.filter === "slowmo" && !scene.needsSlowMo) return false;
       if (state.filter === "remaining" && getSceneProgress(scene).isComplete) return false;
+      if (state.filter === "main" || state.filter === "branch") {
+        const matchesCampus = SHOOTING_ORDER.some((st) => st.sceneId === scene.id && st.campusKey === state.filter);
+        if (!matchesCampus) return false;
+      }
 
       if (q) {
         const haystack = [
@@ -222,6 +243,252 @@
       }
       return true;
     });
+  }
+
+  function getFilteredScheduleSteps() {
+    const q = state.search.trim().toLowerCase();
+    return SHOOTING_ORDER.filter((stepObj) => {
+      if (state.filter === "main" && stepObj.campusKey !== "main") return false;
+      if (state.filter === "branch" && stepObj.campusKey !== "branch") return false;
+
+      if (stepObj.kind === "scene") {
+        const scene = DATA.scenes.find((s) => s.id === stepObj.sceneId);
+        if (!scene) return false;
+        if (state.filter === "highlight" && !scene.isHighlight) return false;
+        if (state.filter === "outdoor" && scene.environment !== "outdoor") return false;
+        if (state.filter === "indoor" && !scene.needsLight) return false;
+        if (state.filter === "remaining" && getSceneProgress(scene).isComplete) return false;
+        if (q) {
+          const hay = [
+            `bước ${stepObj.step}`,
+            stepObj.time,
+            stepObj.teacher,
+            stepObj.campus,
+            stepObj.labelOverride,
+            stepObj.quickNote,
+            scene.code,
+            scene.title,
+            scene.vnTitle,
+            scene.location,
+            scene.gimbalMode,
+            scene.lightStatus,
+            scene.beginnerTip,
+            ...scene.dialogue.map((d) => d.text)
+          ].join(" ").toLowerCase();
+          if (!hay.includes(q)) return false;
+        }
+        return true;
+      } else {
+        const isOic = stepObj.kind === "oic";
+        if (state.filter === "highlight" && !isOic) return false;
+        if (state.filter === "outdoor") return false;
+        if (state.filter === "remaining" && getSpecialProgress(stepObj.specialId).isComplete) return false;
+        if (q) {
+          const hay = [
+            `bước ${stepObj.step}`,
+            stepObj.time,
+            stepObj.teacher,
+            stepObj.campus,
+            stepObj.labelOverride,
+            stepObj.quickNote,
+            isOic ? "oic sink float thí nghiệm bát trong suốt" : "r5 tổ chuyên môn thư viện giáo án"
+          ].join(" ").toLowerCase();
+          if (!hay.includes(q)) return false;
+        }
+        return true;
+      }
+    });
+  }
+
+  function buildScheduleRibbonHtml(stepObj) {
+    const ribbonCls = stepObj.kind === "oic" ? " ribbon-oic" : (stepObj.campusKey === "branch" ? " ribbon-branch" : "");
+    return `
+      <div class="step-ribbon${ribbonCls}">
+        <span class="step-ribbon-left">
+          <span class="step-num-badge">BƯỚC ${String(stepObj.step).padStart(2, "0")}</span>
+          <span>⏰ ${escapeHtml(stepObj.time)}</span>
+        </span>
+        <span class="step-teacher-pill">👩‍🏫 ${escapeHtml(stepObj.teacher)}</span>
+      </div>
+    `;
+  }
+
+  function buildScheduleStepCardHtml(stepObj) {
+    if (stepObj.kind === "scene") {
+      const scene = DATA.scenes.find((s) => s.id === stepObj.sceneId);
+      if (!scene) return "";
+      const prog = getSceneProgress(scene);
+      const lightClass = scene.needsLight ? "light-on" : "light-off";
+      const firstPrompt = scene.aiPrompts[0];
+
+      return `
+        <article class="scene-card ${scene.isHighlight ? "is-highlight" : ""} ${prog.isComplete ? "is-completed" : ""}" data-scene-id="${scene.id}">
+          ${buildScheduleRibbonHtml(stepObj)}
+          <div class="scene-thumb-wrap" data-open-step="${stepObj.step}" title="Bấm xem chi tiết cách quay & Prompt">
+            <img src="${scene.image}" alt="Ảnh demo ${escapeHtml(scene.title)}" class="scene-thumb" loading="lazy" />
+            <div class="thumb-top-badges">
+              <span class="scene-code-pill">${escapeHtml(scene.code)} • 🏫 ${escapeHtml(stepObj.campus)}</span>
+              ${scene.isHighlight ? `<span class="scene-star-pill">⭐ Điểm nhấn</span>` : ""}
+            </div>
+            <div class="thumb-bottom-bar">
+              <span class="thumb-loc">📍 ${escapeHtml(scene.location)}</span>
+              <span class="thumb-cta">🔍 Xem chi tiết</span>
+            </div>
+          </div>
+
+          <div class="scene-card-body">
+            <div class="scene-title-block" data-open-step="${stepObj.step}">
+              <h3>${escapeHtml(stepObj.labelOverride || scene.title)}</h3>
+              <p class="scene-vn-title">${escapeHtml(scene.vnTitle)} • ⏱ ${escapeHtml(scene.duration)}</p>
+            </div>
+
+            <div class="scene-meta-grid">
+              <div class="meta-chip">
+                <span class="meta-chip-label">🕹️ DJI RS 4 Mini</span>
+                ${escapeHtml(scene.gimbalMode)}
+              </div>
+              <div class="meta-chip ${lightClass}">
+                <span class="meta-chip-label">${scene.needsLight ? "💡 Đèn LED nhỏ" : "☀️ Ánh sáng"}</span>
+                ${escapeHtml(scene.lightStatus)}
+              </div>
+            </div>
+
+            <div class="scene-card-tip">
+              <div class="scene-card-tip-inner"><strong>🎯 Lưu ý bước này:</strong> ${escapeHtml(stepObj.quickNote)}</div>
+            </div>
+
+            <div class="scene-card-footer">
+              <span class="card-shot-progress ${prog.isComplete ? "all-done" : ""}">
+                ${prog.isComplete ? "✅ Đủ cảnh" : `🎬 ${prog.done}/${prog.total} cú máy`}
+              </span>
+              <div class="card-btn-group">
+                ${firstPrompt ? `<button type="button" class="btn btn-outline btn-sm" data-copy-prompt="${scene.id}-0">📋 Prompt</button>` : ""}
+                <button type="button" class="btn btn-primary btn-sm" data-open-step="${stepObj.step}">Cách quay →</button>
+              </div>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    // Special step (R5 or OIC)
+    const isOic = stepObj.kind === "oic";
+    const sp = isOic
+      ? SPECIAL_SCENES.find((x) => x.id === "oic2") || SPECIAL_SCENES[1]
+      : SPECIAL_SCENES.find((x) => x.id === "r5") || SPECIAL_SCENES[0];
+    const prog = getSpecialProgress(stepObj.specialId);
+
+    return `
+      <article class="scene-card is-highlight ${prog.isComplete ? "is-completed" : ""}">
+        ${buildScheduleRibbonHtml(stepObj)}
+        <div class="scene-thumb-wrap" data-open-step="${stepObj.step}" title="Bấm xem chi tiết cách quay">
+          <img src="${sp.image}" alt="${escapeHtml(stepObj.labelOverride)}" class="scene-thumb" loading="lazy" />
+          <div class="thumb-top-badges">
+            <span class="scene-code-pill">${isOic ? "KHÚC 3 • LỚP OIC" : "KHÚC 1 • CẢNH R5"} • 🏫 ${escapeHtml(stepObj.campus)}</span>
+            <span class="scene-star-pill">${isOic ? "⭐ BẮT BUỘC CHIỀU" : "📌 MỚI (EXCEL)"}</span>
+          </div>
+          <div class="thumb-bottom-bar">
+            <span class="thumb-loc">📍 ${isOic ? "Phòng học Lớp OIC (Trường chính)" : "Thư viện Trường chính (gộp sau PC 08)"}</span>
+            <span class="thumb-cta">🔍 Xem chi tiết</span>
+          </div>
+        </div>
+        <div class="scene-card-body">
+          <div class="scene-title-block" data-open-step="${stepObj.step}">
+            <h3>${escapeHtml(stepObj.labelOverride)}</h3>
+            <p class="scene-vn-title">${isOic ? "Step 1 Predict → Step 2 Test bát trong suốt → Step 3 & 4 Present & Wrap-up" : "3–4 cô soạn bài, xem sách GDPT 2018, laptop & bộ học liệu (dưới VO R5)"}</p>
+          </div>
+          <div class="scene-meta-grid">
+            <div class="meta-chip">
+              <span class="meta-chip-label">⚙️ Sigma 18-50mm</span>
+              ${escapeHtml(sp.cameraSpec)}
+            </div>
+            <div class="meta-chip light-on">
+              <span class="meta-chip-label">💡 Đèn LED nhỏ</span>
+              ${escapeHtml(sp.lightSpec)}
+            </div>
+          </div>
+          <div class="scene-card-tip">
+            <div class="scene-card-tip-inner"><strong>🎯 Lưu ý bước này:</strong> ${escapeHtml(stepObj.quickNote)}</div>
+          </div>
+          <div class="scene-card-footer">
+            <span class="card-shot-progress ${prog.isComplete ? "all-done" : ""}">
+              ${prog.isComplete ? "✅ Đủ cảnh" : `🎬 ${prog.done}/${prog.total} cú máy`}
+            </span>
+            <div class="card-btn-group">
+              <button type="button" class="btn btn-primary btn-sm" data-open-step="${stepObj.step}">Cách quay →</button>
+            </div>
+          </div>
+        </div>
+      </article>
+    `;
+  }
+
+  function buildSpecialDetailHtml(specialKey, stepObj) {
+    const isOic = specialKey === "oic_all";
+    const items = isOic ? SPECIAL_SCENES.filter((x) => x.id.startsWith("oic")) : SPECIAL_SCENES.filter((x) => x.id === "r5");
+    const shots = SPECIAL_SHOTS.filter((sh) => sh.stepKey === specialKey);
+    const bannerHtml = stepObj
+      ? `<div class="detail-step-banner ${isOic ? "ribbon-oic" : ""}"><span>🗓️ BƯỚC ${String(stepObj.step).padStart(2, "0")} • ⏰ ${escapeHtml(stepObj.time)} • 🏫 ${escapeHtml(stepObj.campus)}</span><span>👩‍🏫 ${escapeHtml(stepObj.teacher)}</span></div>`
+      : "";
+
+    const shotsHtml = shots.map((shot, idx) => {
+      const isDone = state.doneShots.has(shot.id);
+      return `
+        <label class="shot-item ${isDone ? "done" : ""}">
+          <input type="checkbox" class="shot-checkbox" data-toggle-shot="${shot.id}" ${isDone ? "checked" : ""} />
+          <div class="shot-content">
+            <div class="shot-top">
+              <span class="badge badge-blue">Cú ${idx + 1}</span>
+              <span class="badge badge-green">🏫 ${escapeHtml(shot.campus)}</span>
+              <span class="badge badge-slate">🎥 ${escapeHtml(shot.framing)}</span>
+              <span class="badge badge-violet">🕹️ ${escapeHtml(shot.move)}</span>
+            </div>
+            <p class="shot-desc">${escapeHtml(shot.desc)}</p>
+          </div>
+        </label>
+      `;
+    }).join("");
+
+    const cardsHtml = items.map((sp) => `
+      <div class="detail-grid" style="border-top: 1px solid #e2e8f0;">
+        <div>
+          <div class="viewfinder-box">
+            <img src="${sp.image}" alt="${escapeHtml(sp.title)}" class="viewfinder-img" />
+            <div class="vf-motion-badge">🕹️ ${escapeHtml(sp.gimbalSpec)}</div>
+          </div>
+        </div>
+        <div>
+          <div style="margin-bottom:8px;">
+            <span class="badge ${sp.badgeColor}">${escapeHtml(sp.code)}</span>
+            <span class="badge badge-amber">⏰ ${escapeHtml(sp.schedule)}</span>
+          </div>
+          <h4 style="margin:0 0 6px; font-size:1rem;">${escapeHtml(sp.title)}</h4>
+          <p style="margin:0 0 10px; font-size:0.86rem; color:#475569;">${escapeHtml(sp.purpose)}</p>
+          <div class="tech-stack" style="margin-top:0;">
+            <div class="tech-row"><strong>⚙️ Sigma 18-50mm f/2.8</strong>${escapeHtml(sp.cameraSpec)}</div>
+            <div class="tech-row"><strong>💡 Đèn LED &amp; Thu âm</strong>${escapeHtml(sp.lightSpec)}</div>
+            <div class="tech-row tip-connect"><strong>🗣️ Lời bình / Thoại EN</strong>${escapeHtml(sp.voText)}</div>
+          </div>
+        </div>
+      </div>
+    `).join("");
+
+    return `
+      <article class="detail-card is-highlight">
+        ${bannerHtml}
+        <div class="detail-header">
+          <div class="detail-title-wrap">
+            <h3>${isOic ? "🧪 LỚP OIC: Thí nghiệm Sink & Float (3 bước bắt buộc 14:25 – 15:00)" : "📚 CẢNH R5 (MỚI): Tổ chuyên môn soạn bài & học liệu"}</h3>
+            <p>${isOic ? "Quay tại Phòng học OIC (Trường chính) • Dùng BÁT NHỰA TRONG SUỐT & không nói 'filled with air' cho bút chì/thước nhựa" : "Gộp quay ngay tại Thư viện Trường chính (10:25 – 10:45) cùng Cô Cúc, Cô Trang, Cô Ngân — chạy dưới VO R5, không cần thu thoại"}</p>
+          </div>
+        </div>
+        <div style="padding: 16px 22px;">
+          <h4 class="detail-section-title">🎬 Checklist cú máy (Tích đánh dấu đã quay)</h4>
+          <div class="shot-list">${shotsHtml}</div>
+        </div>
+        ${cardsHtml}
+      </article>
+    `;
   }
 
   // ==================== SCENE CARD (GRID MODE) ====================
@@ -613,15 +880,75 @@
   // ==================== RENDER SCENES ====================
   function renderScenes() {
     const container = document.getElementById("scenesContainer");
-    const filtered = getFilteredScenes();
-
     container.className = state.viewMode === "grid" ? "scenes-grid" : "scenes-stream";
 
+    if (state.orderMode === "schedule") {
+      const steps = getFilteredScheduleSteps();
+      if (steps.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state" style="grid-column: 1 / -1">
+            <p style="font-size: 1rem; font-weight: 700; margin-bottom: 6px;">Không tìm thấy bước quay phù hợp</p>
+            <p style="margin: 0;">Thử xóa từ khóa tìm kiếm hoặc chọn bộ lọc "Tất cả (20 bước)".</p>
+          </div>
+        `;
+        return;
+      }
+
+      const phaseMeta = {};
+      SHOOTING_ORDER.forEach((st) => {
+        if (st.phaseTitle) phaseMeta[st.phaseId] = st;
+      });
+
+      const htmlParts = [];
+      let lastPhase = null;
+      steps.forEach((st) => {
+        if (st.phaseId !== lastPhase) {
+          lastPhase = st.phaseId;
+          const meta = phaseMeta[st.phaseId];
+          if (meta) {
+            htmlParts.push(`
+              <div class="phase-banner ${meta.phaseColor || ""}">
+                <div>
+                  <h3 class="phase-banner-title">${escapeHtml(meta.phaseTitle)}</h3>
+                  <p class="phase-banner-sub">${escapeHtml(meta.phaseSub || "")}</p>
+                </div>
+              </div>
+            `);
+          }
+        }
+
+        if (state.viewMode === "grid") {
+          htmlParts.push(buildScheduleStepCardHtml(st));
+        } else {
+          if (st.kind === "scene") {
+            const scene = DATA.scenes.find((s) => s.id === st.sceneId);
+            if (scene) {
+              const bannerCls = st.campusKey === "branch" ? " ribbon-branch" : "";
+              const stepTop = `<div class="detail-step-banner${bannerCls}"><span>🗓️ BƯỚC ${String(st.step).padStart(2, "0")} • ⏰ ${escapeHtml(st.time)} • 🏫 ${escapeHtml(st.campus)}</span><span>👩‍🏫 ${escapeHtml(st.teacher)}</span></div>`;
+              htmlParts.push(
+                buildDetailSheetHtml(scene, `sched-${st.step}`).replace(
+                  /(<article class="detail-card[^>]*>)/,
+                  `$1${stepTop}`
+                )
+              );
+            }
+          } else {
+            htmlParts.push(buildSpecialDetailHtml(st.specialId, st));
+          }
+        }
+      });
+
+      container.innerHTML = htmlParts.join("");
+      return;
+    }
+
+    // Script editing order (PC 01 -> 16)
+    const filtered = getFilteredScenes();
     if (filtered.length === 0) {
       container.innerHTML = `
         <div class="empty-state" style="grid-column: 1 / -1">
           <p style="font-size: 1rem; font-weight: 700; margin-bottom: 6px;">Không tìm thấy phân cảnh phù hợp</p>
-          <p style="margin: 0;">Thử xóa từ khóa tìm kiếm hoặc chọn bộ lọc "Tất cả (16)".</p>
+          <p style="margin: 0;">Thử xóa từ khóa tìm kiếm hoặc chọn bộ lọc "Tất cả".</p>
         </div>
       `;
       return;
@@ -749,13 +1076,39 @@
       </tr>`;
   }
 
-  // ==================== RENDER CHECKLIST TAB ====================
+  // ==================== RENDER CHECKLIST TAB (FOLLOWING SHOOTING ORDER 1 -> 20) ====================
   function renderChecklist() {
     const container = document.getElementById("checklistContainer");
     const htmlParts = [];
+    const phaseMeta = {};
+    SHOOTING_ORDER.forEach((st) => {
+      if (st.phaseTitle) phaseMeta[st.phaseId] = st;
+    });
 
-    for (const scene of DATA.scenes) {
-      const visibleShots = scene.shots.filter((sh) => {
+    let lastPhase = null;
+
+    for (const st of SHOOTING_ORDER) {
+      let shots = [];
+      let prog = { done: 0, total: 0, isComplete: false };
+      let titleText = st.labelOverride;
+      let codeBadge = `BƯỚC ${String(st.step).padStart(2, "0")}`;
+      let needsLight = true;
+      let isHighlight = st.kind === "oic";
+      let openAttr = `data-open-step="${st.step}"`;
+
+      if (st.kind === "scene") {
+        const scene = DATA.scenes.find((s) => s.id === st.sceneId);
+        if (!scene) continue;
+        shots = scene.shots;
+        prog = getSceneProgress(scene);
+        needsLight = scene.needsLight;
+        isHighlight = scene.isHighlight;
+      } else {
+        shots = SPECIAL_SHOTS.filter((sh) => sh.stepKey === st.specialId);
+        prog = getSpecialProgress(st.specialId);
+      }
+
+      const visibleShots = shots.filter((sh) => {
         const done = state.doneShots.has(sh.id);
         if (state.checklistFilter === "todo" && done) return false;
         if (state.checklistFilter === "done" && !done) return false;
@@ -763,7 +1116,21 @@
       });
       if (visibleShots.length === 0) continue;
 
-      const prog = getSceneProgress(scene);
+      if (st.phaseId !== lastPhase) {
+        lastPhase = st.phaseId;
+        const meta = phaseMeta[st.phaseId];
+        if (meta) {
+          htmlParts.push(`
+            <div class="phase-banner ${meta.phaseColor || ""}" style="margin-bottom:4px;">
+              <div>
+                <h3 class="phase-banner-title">${escapeHtml(meta.phaseTitle)}</h3>
+                <p class="phase-banner-sub">${escapeHtml(meta.phaseSub || "")}</p>
+              </div>
+            </div>
+          `);
+        }
+      }
+
       const shotsMarkup = visibleShots
         .map((shot) => {
           const isDone = state.doneShots.has(shot.id);
@@ -787,18 +1154,19 @@
         <div class="cl-group">
           <div class="cl-group-head">
             <div class="cl-group-title">
-              <span class="badge badge-blue">${escapeHtml(scene.code)}</span>
-              <span>${escapeHtml(scene.title)}</span>
-              ${scene.isHighlight ? `<span class="badge badge-amber">⭐ Điểm nhấn</span>` : ""}
+              <span class="badge badge-blue">${codeBadge} • ⏰ ${escapeHtml(st.time)}</span>
+              <span>${escapeHtml(titleText)}</span>
+              <span class="badge badge-violet">👩‍🏫 ${escapeHtml(st.teacher)}</span>
+              ${isHighlight ? `<span class="badge badge-amber">⭐ Điểm nhấn</span>` : ""}
             </div>
             <div style="display:flex; gap:8px; align-items:center;">
-              <span class="badge ${scene.needsLight ? "badge-amber" : "badge-green"}">
-                ${scene.needsLight ? "💡 Bật đèn nhỏ" : "☀️ Tắt đèn"}
+              <span class="badge ${needsLight ? "badge-amber" : "badge-green"}">
+                ${needsLight ? "💡 Bật đèn nhỏ" : "☀️ Tắt đèn"}
               </span>
               <span class="badge ${prog.isComplete ? "badge-green" : "badge-slate"}">
                 ${prog.done}/${prog.total}
               </span>
-              <button type="button" class="btn btn-outline btn-sm" data-open-modal="${scene.id}">
+              <button type="button" class="btn btn-outline btn-sm" ${openAttr}>
                 Xem ảnh demo
               </button>
             </div>
@@ -815,13 +1183,9 @@
   }
 
   // ==================== MODAL ====================
-  function openSceneModal(sceneId) {
-    const id = Number(sceneId);
-    const idx = DATA.scenes.findIndex((s) => s.id === id);
-    if (idx === -1) return;
-
-    state.activeModalSceneId = id;
-    renderModalContent(id);
+  function openModalDescriptor(desc) {
+    state.activeModalKey = desc;
+    renderModalContent(desc);
 
     const modal = document.getElementById("sceneModal");
     modal.classList.add("open");
@@ -830,11 +1194,48 @@
     document.getElementById("modalBody").scrollTop = 0;
   }
 
-  function renderModalContent(sceneId) {
-    const idx = DATA.scenes.findIndex((s) => s.id === sceneId);
+  function openSceneModal(sceneId) {
+    openModalDescriptor({ type: "scene", id: Number(sceneId) });
+  }
+
+  function openStepModal(stepNum) {
+    openModalDescriptor({ type: "step", step: Number(stepNum) });
+  }
+
+  function renderModalContent(desc) {
+    if (!desc) return;
+    if (desc.type === "step") {
+      const idx = SHOOTING_ORDER.findIndex((st) => st.step === desc.step);
+      if (idx === -1) return;
+      const stepObj = SHOOTING_ORDER[idx];
+      const total = SHOOTING_ORDER.length;
+
+      document.getElementById("modalPrevBtn").disabled = idx === 0;
+      document.getElementById("modalNextBtn").disabled = idx === total - 1;
+
+      if (stepObj.kind !== "scene") {
+        document.getElementById("modalCounter").textContent = `Bước ${stepObj.step} / ${total} — ${stepObj.time}`;
+        document.getElementById("modalBody").innerHTML = buildSpecialDetailHtml(stepObj.specialId, stepObj);
+        return;
+      }
+
+      const scene = DATA.scenes.find((s) => s.id === stepObj.sceneId);
+      if (!scene) return;
+      document.getElementById("modalCounter").textContent = `Bước ${stepObj.step} / ${total} — ${stepObj.time} (${scene.code})`;
+      const bannerCls = stepObj.campusKey === "branch" ? " ribbon-branch" : "";
+      const stepTop = `<div class="detail-step-banner${bannerCls}"><span>🗓️ BƯỚC ${String(stepObj.step).padStart(2, "0")} • ⏰ ${escapeHtml(stepObj.time)} • 🏫 ${escapeHtml(stepObj.campus)}</span><span>👩‍🏫 ${escapeHtml(stepObj.teacher)}</span></div>`;
+      const html = buildDetailSheetHtml(scene, `modal-step-${stepObj.step}`).replace(
+        /(<article class="detail-card[^>]*>)/,
+        `$1${stepTop}`
+      );
+      document.getElementById("modalBody").innerHTML = html;
+      return;
+    }
+
+    // Scene mode (PC 01 -> 16)
+    const idx = DATA.scenes.findIndex((s) => s.id === desc.id);
     if (idx === -1) return;
     const scene = DATA.scenes[idx];
-
     document.getElementById("modalCounter").textContent = `${idx + 1} / ${DATA.scenes.length} — ${scene.code}`;
     document.getElementById("modalPrevBtn").disabled = idx === 0;
     document.getElementById("modalNextBtn").disabled = idx === DATA.scenes.length - 1;
@@ -842,7 +1243,7 @@
   }
 
   function closeSceneModal() {
-    state.activeModalSceneId = null;
+    state.activeModalKey = null;
     const modal = document.getElementById("sceneModal");
     modal.classList.remove("open");
     modal.setAttribute("aria-hidden", "true");
@@ -850,8 +1251,16 @@
   }
 
   function stepModal(delta) {
-    if (state.activeModalSceneId === null) return;
-    const idx = DATA.scenes.findIndex((s) => s.id === state.activeModalSceneId);
+    if (!state.activeModalKey) return;
+    if (state.activeModalKey.type === "step") {
+      const idx = SHOOTING_ORDER.findIndex((st) => st.step === state.activeModalKey.step);
+      const nextIdx = idx + delta;
+      if (nextIdx >= 0 && nextIdx < SHOOTING_ORDER.length) {
+        openStepModal(SHOOTING_ORDER[nextIdx].step);
+      }
+      return;
+    }
+    const idx = DATA.scenes.findIndex((s) => s.id === state.activeModalKey.id);
     const nextIdx = idx + delta;
     if (nextIdx >= 0 && nextIdx < DATA.scenes.length) {
       openSceneModal(DATA.scenes[nextIdx].id);
@@ -910,6 +1319,24 @@
       btnVidClean.addEventListener("click", () =>
         switchDemoVideo("./DaiMo_FULL_32Canh_Sach.mp4", btnVidClean)
       );
+    }
+
+    // Order mode toggle (Schedule 1->20 vs Script PC 01->16)
+    const btnOrderSchedule = document.getElementById("btnOrderSchedule");
+    const btnOrderScript = document.getElementById("btnOrderScript");
+    if (btnOrderSchedule && btnOrderScript) {
+      btnOrderSchedule.addEventListener("click", () => {
+        state.orderMode = "schedule";
+        btnOrderSchedule.classList.add("active");
+        btnOrderScript.classList.remove("active");
+        renderScenes();
+      });
+      btnOrderScript.addEventListener("click", () => {
+        state.orderMode = "script";
+        btnOrderScript.classList.add("active");
+        btnOrderSchedule.classList.remove("active");
+        renderScenes();
+      });
     }
 
     // View mode toggle
@@ -977,7 +1404,7 @@
     });
 
     document.addEventListener("keydown", (e) => {
-      if (state.activeModalSceneId === null) return;
+      if (state.activeModalKey === null) return;
       if (e.key === "Escape") closeSceneModal();
       if (e.key === "ArrowLeft") stepModal(-1);
       if (e.key === "ArrowRight") stepModal(1);
@@ -1033,6 +1460,13 @@
           const isNowOn = target.classList.toggle(cls);
           vfBtn.classList.toggle("active", isNowOn);
         }
+        return;
+      }
+
+      // Open step modal (1..20 exact shooting order)
+      const openStepTrigger = e.target.closest("[data-open-step]");
+      if (openStepTrigger) {
+        openStepModal(openStepTrigger.dataset.openStep);
         return;
       }
 

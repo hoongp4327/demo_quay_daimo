@@ -31,6 +31,9 @@
             <div class="progress-fill" id="globalProgressFill" style="width: 0%"></div>
           </div>
         </div>
+        <a href="./Phan_Cong_Quay_DaiMo.xlsx" download class="btn btn-outline btn-sm" title="Tải file Excel phân công các cô">
+          📊 File Excel phân công
+        </a>
         <button type="button" class="btn btn-outline btn-sm" id="printBtn" title="In sổ tay hoặc lưu PDF">
           🖨️ In sổ tay
         </button>
@@ -41,7 +44,7 @@
     <nav class="nav-tabs-wrap" aria-label="Điều hướng chính">
       <div class="container nav-tabs" role="tablist">
         <button class="nav-tab active" data-tab="storyboard" role="tab" aria-selected="true">
-          🎬 16 Phân cảnh chính
+          🗓️ Lịch quay 20 bước (1 → 20)
         </button>
         <button class="nav-tab" data-tab="missing" role="tab" aria-selected="false">
           ➕ Cảnh R5, Lớp OIC &amp; 16 Cảnh bổ sung
@@ -53,7 +56,7 @@
           🔗 Nối 2 Điểm trường &amp; Lịch quay
         </button>
         <button class="nav-tab" data-tab="checklist" role="tab" aria-selected="false">
-          ✅ Checklist ngày quay
+          ✅ Checklist theo thứ tự quay
         </button>
       </div>
     </nav>
@@ -136,26 +139,36 @@
             type="search"
             id="sceneSearch"
             class="search-input"
-            placeholder="Tìm cảnh, lời thoại, thiết bị (vd: Passport, thư viện, bóng rổ, match cut)..."
+            placeholder="Tìm bước quay, tên cô (Cô Ngân, Cô Cúc...), cảnh, giờ quay..."
           />
+        </div>
+
+        <div class="view-toggle" role="group" aria-label="Thứ tự sắp xếp">
+          <button type="button" class="view-btn active" id="btnOrderSchedule">
+            🗓️ Theo lịch quay (1 → 20)
+          </button>
+          <button type="button" class="view-btn" id="btnOrderScript">
+            🎞️ Theo kịch bản dựng (PC 01 → 16)
+          </button>
         </div>
 
         <div class="view-toggle" role="group" aria-label="Chế độ xem">
           <button type="button" class="view-btn active" data-view="grid" id="btnViewGrid">
-            🖼️ Lưới tổng quan
+            🖼️ Lưới gọn
           </button>
           <button type="button" class="view-btn" data-view="detail" id="btnViewDetail">
-            📋 Xem đầy đủ + Prompt
+            📋 Đầy đủ + Prompt
           </button>
         </div>
       </div>
 
       <div class="filter-pills" id="filterPills">
-        <button type="button" class="pill active" data-filter="all">Tất cả (16)</button>
-        <button type="button" class="pill pill-star" data-filter="highlight">⭐ Điểm nhấn cần đầu tư (5)</button>
-        <button type="button" class="pill pill-sun" data-filter="outdoor">☀️ Ngoài trời – Tắt đèn (8)</button>
-        <button type="button" class="pill pill-light" data-filter="indoor">💡 Trong nhà – Bật đèn nhỏ (8)</button>
-        <button type="button" class="pill pill-slow" data-filter="slowmo">🐢 Có Slow-mo 50fps</button>
+        <button type="button" class="pill active" data-filter="all">Tất cả (20 bước)</button>
+        <button type="button" class="pill" data-filter="main">🏫 Trường chính (14)</button>
+        <button type="button" class="pill" data-filter="branch">🏫 Phân hiệu T2 30/11 (6)</button>
+        <button type="button" class="pill pill-star" data-filter="highlight">⭐ Điểm nhấn</button>
+        <button type="button" class="pill pill-sun" data-filter="outdoor">☀️ Ngoài trời</button>
+        <button type="button" class="pill pill-light" data-filter="indoor">💡 Trong nhà</button>
         <button type="button" class="pill pill-todo" data-filter="remaining">⏳ Chưa quay xong</button>
       </div>
 
@@ -166,7 +179,7 @@
     <!-- ==================== TAB 1B: R5, OIC & 16 SUPPLEMENTAL SHOTS ==================== -->
     <section id="tab-missing" class="tab-panel">
       <div class="section-header">
-        <h2>🧪 Cảnh R5 (Tổ chuyên môn) &amp; Lớp học OIC (Sink &amp; Float — 14:00 Trường chính)</h2>
+        <h2>🧪 Cảnh R5 (Tổ chuyên môn) &amp; Lớp học OIC (Sink &amp; Float — 14:25–15:00 Trường chính)</h2>
         <p>4 ảnh demo bổ sung cho <strong>Khúc 1 (Cảnh R5)</strong> và <strong>Khúc 3 (Lớp OIC Màu Xanh lá)</strong> theo file Excel gốc — lưu ý <strong>không dùng 2 MC cố định</strong>, mỗi cảnh học sinh của đúng cô phụ trách nói trực tiếp!</p>
       </div>
       <div id="specialScenesContainer" class="scenes-stream" style="margin-bottom: 32px;"></div>
