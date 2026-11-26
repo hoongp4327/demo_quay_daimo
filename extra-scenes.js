@@ -5,8 +5,8 @@ window.EXTRA_SHOTS = [
   {
     sceneId: 1,
     code: "PC 01 • Bổ sung",
-    title: "Split Screen 2 MC dẫn chuyện ở 2 điểm trường",
-    fillsGap: "Bổ sung cú máy 2 bạn MC (Student A – Điểm chính & Student B – Phân hiệu) đứng riêng ở 2 cơ sở ghép chia đôi màn hình 50/50 đọc lời chào.",
+    title: "Split Screen Học sinh 2 điểm trường chào mở đầu",
+    fillsGap: "Bổ sung cú máy 2 học sinh đại diện (1 bạn Điểm chính & 1 bạn Phân hiệu) đứng riêng ở 2 cơ sở ghép chia đôi màn hình 50/50 đọc lời chào.",
     image: "./images-bo-sung/scene-01-b.jpg",
     cameraSpec: "Sigma 24–28mm • Khẩu f/4 (đứng bóng râm) • 4K 25p • Bật lưới 3x3 căn giữa khung!",
     gimbalSpec: "RS 4 Mini: Bấm đúp cò Recenter → Bóp giữ cò Lock tĩnh tuyệt đối",
@@ -191,7 +191,63 @@ window.EXTRA_SHOTS = [
     cameraSpec: "Sigma 18mm rộng nhất! (SteadyShot OFF) • Khẩu f/7.1 • 1080p 50p ở cả 2 cơ sở",
     gimbalSpec: "RS 4 Mini: Cùng kiểu đi lùi chậm & nâng nhẹ gimbal ở cả 2 cơ sở để ghép đối xứng!",
     lightSpec: "Tắt đèn (Quay nắng sáng/chiều cùng hướng sáng để 2 nửa màn hình đồng màu!)",
-    motionVi: "Khung hình chia đôi 50/50 hoàn hảo: nửa trái là Điểm chính với Student A cùng thầy cô học sinh vẫy tay, nửa phải là Phân hiệu với Student B cùng thầy cô học sinh vẫy tay đồng bộ khi máy từ từ lùi mở rộng.",
+    motionVi: "Khung hình chia đôi 50/50 hoàn hảo: nửa trái là Điểm chính với học sinh cùng thầy cô vẫy tay, nửa phải là Phân hiệu với học sinh cùng thầy cô vẫy tay đồng bộ khi máy từ từ lùi mở rộng.",
     prompt: "Single continuous inspiring cinematic 50/50 vertical split-screen finale divided cleanly down the center by a thin white line, both halves pulling backward steadily in sync. Left half: sunny Main Campus courtyard with a smiling 9-year-old Vietnamese boy host in front and teachers and dozens of uniformed primary students waving happily behind him. Right half: sunny Branch Campus courtyard with a smiling 9-year-old Vietnamese girl host in front and teachers and dozens of uniformed students waving happily behind her. Matching golden daylight, joyous uplifting cheering and clapping finale ambiance, no garbled speech."
+  }
+];
+
+// 4 Cảnh đặc biệt từ File Excel gốc: Cảnh R5 (Tổ chuyên môn) + 3 Bước Lớp học OIC (Sink & Float)
+window.SPECIAL_SCENES = [
+  {
+    id: "r5",
+    code: "KHÚC 1 • CẢNH R5 (MỚI)",
+    badgeColor: "badge-blue",
+    title: "Giáo viên chuẩn bị bài, học liệu & sinh hoạt tổ chuyên môn",
+    schedule: "Trường chính • Thư viện (10:40 – 10:50) • Cô Cúc, Cô Trang + Cô Ngân",
+    image: "./images-oic-r5/r5_teachers_prep.jpg",
+    purpose: "Hình ảnh minh họa dưới Lời bình VO R5 (Cột H Excel): \"To bring that vision into practice, connecting Vietnam's 2018 General Education Curriculum with suitable international educational approaches...\" — Không cần thu tiếng trực tiếp!",
+    cameraSpec: "Sigma 24mm f/3.5 (toàn bàn 3 cô) + 45mm f/2.8 (cận tay xếp Flashcard, sổ Passport, giáo án)",
+    gimbalSpec: "RS 4 Mini: PF trượt ngang chậm quanh bàn & Giữ cò Lock đẩy cận bàn tay",
+    lightSpec: "Bật đèn LED nhỏ 30% (5500K góc chếch 45°)",
+    voText: "VO R5: \"To bring that vision into practice, connecting Vietnam's 2018 General Education Curriculum with suitable international educational approaches requires careful consideration of learning goals, pupils' ages, and each school's actual conditions.\""
+  },
+  {
+    id: "oic1",
+    code: "KHÚC 3 • LỚP OIC — STEP 1 (PREDICT)",
+    badgeColor: "badge-green",
+    title: "Lớp OIC: Giới thiệu đồ vật & Dự đoán Chìm hay Nổi (Sink & Float)",
+    schedule: "Trường chính (BẮT BUỘC 14:00 – 14:55) • Phòng học OIC",
+    image: "./images-oic-r5/oic_step1_predict.jpg",
+    purpose: "Mở đầu bằng Lời bình VO R14, sau đó cô giơ bát nước trong suốt, cái thìa kim loại và ô tô đồ chơi nhựa rỗng hỏi học sinh dự đoán vật nào chìm, vật nào nổi.",
+    cameraSpec: "Sigma 24mm f/3.5 (cô & bảng) + 35mm f/2.8 (cận 2–3 học sinh giơ tay đoán) • 4K 25p (1/50s)",
+    gimbalSpec: "RS 4 Mini: PF lia mượt từ cô sang các cánh tay giơ lên dự đoán",
+    lightSpec: "Bật đèn LED nhỏ 35% (5500K góc 45°) • Nhớ đặt điện thoại ghi âm gần bàn đầu!",
+    voText: "VO R14 + Thoại: \"Look! A bowl of water, a spoon, and a toy car. Do you think they will float or sink?\" — \"I think the spoon will sink!\" — \"Interesting ideas, let's find out!\""
+  },
+  {
+    id: "oic2",
+    code: "KHÚC 3 • LỚP OIC — STEP 2 (TEST & OBSERVE)",
+    badgeColor: "badge-green",
+    title: "Lớp OIC: Nhóm 6 bé tự thả 6 vật vào bát nước TRONG SUỐT",
+    schedule: "Trường chính (14:15 – 14:30) • BẮT BUỘC dùng bát/chậu trong suốt!",
+    image: "./images-oic-r5/oic_step2_test_water.jpg",
+    purpose: "Cảnh đắt giá nhất của toàn Khúc 3: hạ máy quay ngang mép bát nước trong suốt để thấy rõ chìa khóa/hòn đá chìm xuống đáy, bút chì/thước nhựa nổi trên mặt nước! (Nhớ thả thử trước cả 8 vật!).",
+    cameraSpec: "Sigma 50mm f/2.8 (1080p 50p cận bát nước!) + 24mm f/4 (cô & trợ giảng hỏi từng nhóm 6 bé)",
+    gimbalSpec: "RS 4 Mini: Chế độ xách thấp (Briefcase) ngang mặt bàn, giữ cò Lock đẩy chậm vào bát nước",
+    lightSpec: "Bật đèn LED nhỏ 35% chiếu nghiêng hông (tránh rọi thẳng gây lóa mặt nước!)",
+    voText: "Thoại: \"Now it's your turn to be little scientists! Does the key float or sink?\" — \"It sinks! And the pencil floats!\""
+  },
+  {
+    id: "oic3",
+    code: "KHÚC 3 • LỚP OIC — STEP 3 & 4 (PRESENT & WRAP-UP)",
+    badgeColor: "badge-green",
+    title: "Lớp OIC: Nhóm thuyết trình kết quả & Cả lớp tổng kết vỗ tay",
+    schedule: "Trường chính (14:30 – 14:55) • Chọn 1 nhóm nói to rõ nhất",
+    image: "./images-oic-r5/oic_step3_present_wrapup.jpg",
+    purpose: "Lưu ý sửa chuẩn khoa học: KHÔNG nói 'filled with air' cho bút chì/que gỗ/thước nhựa — chỉ nói 'because it is light' (vật nổi) và 'because it is heavy and solid' (vật chìm)! Kết bằng VO R17 + cả lớp đồng thanh Wrap-up.",
+    cameraSpec: "Sigma 28mm f/3.5 (nhóm đứng báo cáo) + 18mm f/3.5 (toàn lớp vỗ tay) • 4K 25p (1/50s)",
+    gimbalSpec: "RS 4 Mini: Giữ cò Lock tĩnh khi nhóm báo cáo → PF lia rộng cả lớp vỗ tay",
+    lightSpec: "Bật đèn LED nhỏ 35% góc 45° • Đặt điện thoại ghi âm gần nhóm thuyết trình",
+    voText: "Thoại chuẩn KH + VO R17: \"The key sinks because it is heavy and solid. The pencil floats because it is light.\" → \"What did we learn today?\" — \"Some things float. Some things sink!\""
   }
 ];

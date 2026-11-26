@@ -44,7 +44,7 @@
           🎬 16 Phân cảnh chính
         </button>
         <button class="nav-tab" data-tab="missing" role="tab" aria-selected="false">
-          ➕ 16 Cảnh bổ sung &amp; Prompt
+          ➕ Cảnh R5, Lớp OIC &amp; 16 Cảnh bổ sung
         </button>
         <button class="nav-tab" data-tab="gear" role="tab" aria-selected="false">
           📷 Cài đặt ZV-E10, Sigma 18-50 &amp; RS 4 Mini
@@ -89,8 +89,8 @@
         </div>
         <div class="hero-stats">
           <div class="stat-box">
-            <div class="stat-num">32</div>
-            <div class="stat-label">Ảnh demo (16 chính + 16 bổ sung)</div>
+            <div class="stat-num">36</div>
+            <div class="stat-label">Ảnh demo (16A + 16B + R5 + OIC)</div>
           </div>
           <div class="stat-box">
             <div class="stat-num">10:30</div>
@@ -107,21 +107,22 @@
         </div>
       </div>
 
-      <!-- Compiled 32-Shot AI Demo Video Player -->
+      <!-- Compiled Master 4-Chapter AI Demo Video Player -->
       <div class="card-block" style="margin-bottom: 20px; padding: 18px 20px;">
         <div class="card-block-head" style="margin-bottom: 12px;">
           <div>
-            <h3>🎞️ Video Demo Hoàn Chỉnh Đủ 32 Cú Máy / 16 Phân Cảnh (Google Flow Veo 3.1)</h3>
-            <p style="margin: 3px 0 0; font-size: 0.84rem; color: #64748b;">Ghép liền mạch trọn bộ 32 cú máy (~2 phút 23 giây) theo đúng mạch phim từ cổng trường đến đại cảnh Split Screen kết thúc.</p>
+            <h3>🎞️ Video Master 4 Khúc Chi Tiết (Excel + 15 Cảnh + Lớp OIC + Lời bình &amp; Lịch Cô)</h3>
+            <p style="margin: 3px 0 0; font-size: 0.84rem; color: #64748b;">Xem liền mạch trọn bộ 4 Khúc (~2 phút 20 giây) có đủ Cảnh R5, 15 phân cảnh, Lớp OIC (Sink &amp; Float), Lời bình VO, Thoại EN &amp; Cô phụ trách từng cảnh.</p>
           </div>
           <div class="view-toggle" role="group" aria-label="Chọn bản video demo">
-            <button type="button" class="view-btn active" id="btnVidGuide">🎯 Bản 32 cảnh (Có thông số quay)</button>
-            <button type="button" class="view-btn" id="btnVidClean">✨ Bản 32 cảnh (Sạch trình chiếu)</button>
+            <button type="button" class="view-btn active" id="btnVidMaster">🔊 Master 4 Khúc + Lời bình EN</button>
+            <button type="button" class="view-btn" id="btnVidGuide">🎯 32 cảnh (Thông số)</button>
+            <button type="button" class="view-btn" id="btnVidClean">✨ 32 cảnh (Bản sạch)</button>
           </div>
         </div>
         <div style="border-radius: 14px; overflow: hidden; background: #0f172a; box-shadow: 0 8px 24px -6px rgba(15,23,42,0.25);">
           <video id="compiledDemoPlayer" controls preload="metadata" poster="./images/scene-01.jpg" style="width: 100%; max-height: 540px; display: block;">
-            <source src="./DaiMo_FULL_32Canh_HuongDanQuay.mp4" type="video/mp4" />
+            <source src="./DaiMo_MASTER_4Khuc_CoLoiBinhEN.mp4" type="video/mp4" />
             Trình duyệt của bạn không hỗ trợ phát video HTML5.
           </video>
         </div>
@@ -162,11 +163,17 @@
       <div id="scenesContainer" class="scenes-grid"></div>
     </section>
 
-    <!-- ==================== TAB 1B: 16 SUPPLEMENTAL / MISSING SHOTS ==================== -->
+    <!-- ==================== TAB 1B: R5, OIC & 16 SUPPLEMENTAL SHOTS ==================== -->
     <section id="tab-missing" class="tab-panel">
       <div class="section-header">
-        <h2>➕ 16 Ảnh Demo &amp; Prompt Bổ Sung (Các cảnh còn thiếu so với video 72s)</h2>
-        <p>Bộ ảnh mô phỏng trực quan những khoảnh khắc quan trọng còn thiếu (Split Screen 2 MC, viết lá English Tree, trao giải English Passport, bỏ pin cũ, cận khay cơm trước khi ăn, Little Music Star, chụm tay bóng rổ…) — kèm sẵn Prompt Google Flow Veo 3.1 để bạn xem tổng thể đủ <strong>32 góc máy</strong> trước khi bấm máy ngày mai!</p>
+        <h2>🧪 Cảnh R5 (Tổ chuyên môn) &amp; Lớp học OIC (Sink &amp; Float — 14:00 Trường chính)</h2>
+        <p>4 ảnh demo bổ sung cho <strong>Khúc 1 (Cảnh R5)</strong> và <strong>Khúc 3 (Lớp OIC Màu Xanh lá)</strong> theo file Excel gốc — lưu ý <strong>không dùng 2 MC cố định</strong>, mỗi cảnh học sinh của đúng cô phụ trách nói trực tiếp!</p>
+      </div>
+      <div id="specialScenesContainer" class="scenes-stream" style="margin-bottom: 32px;"></div>
+
+      <div class="section-header">
+        <h2>➕ 16 Ảnh Demo &amp; Prompt Bổ Sung (Cảnh B cho 16 phân cảnh)</h2>
+        <p>Bộ 16 góc quay bổ sung (Split Screen, viết lá English Tree, trao giải English Passport, bỏ pin cũ, cận khay cơm trước khi ăn, Little Music Star, chụm tay bóng rổ…) giúp bạn nhìn tổng thể đủ <strong>36 góc máy</strong> trước khi quay!</p>
       </div>
       <div id="extraShotsContainer" class="scenes-stream"></div>
     </section>

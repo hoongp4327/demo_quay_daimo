@@ -94,8 +94,8 @@ window.SHOTBOOK_DATA = {
         name: "Khóa tĩnh & Hạ thấp Briefcase (~1.1m)",
         mode: "RS 4 Mini: Bóp giữ cò (Lock) • Bấm đúp cò = Recenter",
         difficulty: "Rất dễ",
-        how: "Cần đứng yên quay MC nói hoặc Split Screen 50/50? Chỉ cần bấm đúp cò sau cho máy thẳng tắp, rồi bóp giữ cò và ép khuỷu tay vào sườn! Nếu có tay cầm xách (Briefcase Handle) hãy lắp vào để quay ngang tầm mắt bé không bị mỏi lưng.",
-        useIn: "Cảnh thoại 2 MC (Cảnh 1, 6, 16) & Hỏi đáp (Cảnh 2, 11)"
+        how: "Cần đứng yên quay học sinh nói hoặc Split Screen 50/50? Chỉ cần bấm đúp cò sau cho máy thẳng tắp, rồi bóp giữ cò và ép khuỷu tay vào sườn! Nếu có tay cầm xách (Briefcase Handle) hãy lắp vào để quay ngang tầm mắt bé không bị mỏi lưng.",
+        useIn: "Cảnh thoại Học sinh (Cảnh 1, 6, 16) & Hỏi đáp (Cảnh 2, 11)"
       }
     ],
     lightRules: [
@@ -147,7 +147,7 @@ window.SHOTBOOK_DATA = {
         icon: "🪟",
         concept: "Nửa trái là Điểm chính, nửa phải là Phân hiệu cùng xuất hiện song song — nhấn mạnh thông điệp 'Two Campuses – One Big Family'.",
         howToShoot: "Bật lưới 3x3 trên ZV-E10, vặn Sigma về 20–24mm (đừng đứng quá sát), bấm đúp cò RS 4 Mini cho thẳng máy rồi BÓP GIỮ CÒ (Lock) giữ tĩnh. Đặt học sinh CHÍNH GIỮA khung để cắt 50/50 không mất mặt hay tay!",
-        bestScenes: "Cảnh 1 (2 MC cùng nói câu chào), Cảnh 3 (2 sân trường cùng nhảy), Cảnh 16 (Kết bài 2 điểm trường)"
+        bestScenes: "Cảnh 1 (Học sinh 2 cơ sở cùng nói câu chào), Cảnh 3 (2 sân trường cùng nhảy), Cảnh 16 (Kết bài 2 điểm trường)"
       },
       {
         name: "3. Voice Transition (Nối thoại giữa 2 cơ sở)",
@@ -173,28 +173,28 @@ window.SHOTBOOK_DATA = {
     ],
     shootingSchedule: [
       {
-        time: "Buổi sáng sớm (07:15 – 08:30) • Nắng dịu đẹp nhất",
-        location: "Ngoài trời (Cổng trường & Sân trường)",
-        scenes: "Cảnh 1 (Cổng trường) → Cảnh 3 (Giờ chào cờ) → Cảnh 16 (Tập thể vẫy chào - quay luôn lúc đông học sinh ở sân!)",
-        tip: "Nắng sáng xiên mềm, Tắt đèn LED. Khép Sigma về f/5.6–f/8 (hoặc f/4 trong bóng râm). Dùng 18mm cho cảnh rộng sân trường."
+        time: "TRƯỜNG CHÍNH • Sáng Chặng 1: Ngoài trời sớm (07:10 – 09:00) • Nắng mát, Tắt đèn LED",
+        location: "Cổng trường → Sân chào cờ → Sân bóng rổ → English Tree → English Zone → Vườn trường",
+        scenes: "① PC 01 Cổng trường (Cô Ngân • 07:10) → ② PC 03 Chào cờ + KẾT (Cô Hạnh, Cô Tần • 07:25) → ③ PC 15 Bóng rổ (Cô Thủy Tiên • 07:55) → ④ PC 05 ⭐ Tree (Cô Ngân • 08:15) → ⑤ PC 04 ⭐ Zone (Cô Cúc • 08:30) → ⑥ PC 10 Vườn & Pin (Cô Đạm • 08:45)",
+        tip: "Xong sạch 6 cảnh ngoài trời trước 9h nắng gắt! Không cần các bạn học sinh cố định — cảnh nào HS của cô phụ trách cảnh đó nói trực tiếp luôn. Sigma f/5.6–f/8 ngoài nắng, f/2.8–f/4 bóng râm."
       },
       {
-        time: "Giữa sáng (08:45 – 10:30) • Trong nhà phát huy thế mạnh f/2.8",
-        location: "Lớp học, Thư viện, Hành lang, Cầu thang",
-        scenes: "Cảnh 2 (Chào cô) → Cảnh 11 (Khoa học Tự nhiên) → Cảnh 14 (Âm nhạc) → Cảnh 8 (Thư viện) → Cảnh 7 (English Corner) → Cảnh 9 (Cầu thang) → Cảnh 6 (English Passport ở hành lang)",
-        tip: "Mở Sigma f/2.8–f/4 siêu sáng mịn! Đèn LED nhỏ chỉ cần bật nhẹ 25–45% (5500K) góc 45°. Khóa WB 5200K, 4K 25fps (1/50s) chống sọc đèn lớp."
+        time: "TRƯỜNG CHÍNH • Sáng Chặng 2: Trong nhà (09:00 – 10:55) • Bật đèn 30–35%, 4K 25p (1/50s)",
+        location: "Cầu thang → Lớp học → Hành lang → Thư viện (gộp Cảnh R5 Tổ chuyên môn!)",
+        scenes: "⑦ PC 09 Cầu thang (Cô Đạm • 09:00) → ⑧ PC 02 Chào lớp (Cô Thảo • 09:15) → ⑨ PC 07 English Corner (Cô Nhung • 09:35) → ⑩ PC 06 ⭐ English Passport (Cô Ngân • 09:50) → ⑪ PC 08 Thư viện + R5 Tổ chuyên môn soạn bài (Cô Cúc, Cô Trang + Cô Ngân • 10:20–10:55)",
+        tip: "Cảnh R5 (10 phút ngay tại Thư viện): 3–4 cô ngồi xem sách GDPT 2018, laptop, bộ Flashcard & sổ Passport (không cần thu thoại vì chạy dưới Lời bình VO!)."
       },
       {
-        time: "Giờ trưa (11:00 – 11:45)",
-        location: "Phòng ăn / Lớp bán trú",
-        scenes: "Cảnh 13 (Happy Lunch Time)",
-        tip: "Quay cận khay cơm bằng Sigma 35–50mm f/2.8 TRƯỚC khi các bé ăn để xóa phông hậu cảnh lớp cực ngon mắt! Bật đèn LED nhẹ 35% (5000K)."
+        time: "TRƯỜNG CHÍNH • Trưa (11:05 – 11:50) & ĐẦU CHIỀU BẮT BUỘC (14:00 – 14:55): LỚP OIC!",
+        location: "Phòng ăn bán trú → Nghỉ trưa SẠC ĐẦY PIN tại Trường chính → Lớp học OIC (Sink & Float)",
+        scenes: "⑫ PC 13 Bán trú (Cô Thủy Tiên • 11:05–11:50) → [Nghỉ trưa sạc pin] → ⑬ LỚP OIC ⭐ Thí nghiệm Sink & Float (Trường chính • 14:00–14:55)",
+        tip: "Lớp OIC: Dùng bát/chậu nhựa TRONG SUỐT để quay ngang 50mm f/2.8 thấy rõ vật chìm/nổi! Thử trước cả 8 vật & sửa câu thoại bỏ 'filled with air' cho bút chì/thước nhựa (dùng 'because it's light')."
       },
       {
-        time: "Đầu – Giữa chiều (14:30 – 16:30) • Nắng xiên vàng cực điện ảnh",
-        location: "Khu trải nghiệm sân trường & Vườn trường",
-        scenes: "Cảnh 4 (English Zone) → Cảnh 5 (English Tree) → Cảnh 10 (Vườn trường & Trạm pin) → Cảnh 12 (Giờ ra chơi) → Cảnh 15 (Bóng rổ)",
-        tip: "Dưới tán cây/mái che mở f/3.5–f/4 xóa phông đẹp; ra sân bóng rổ nắng sáng khép f/5.6–f/8 và chuyển 1080p 50fps cho Cảnh 12 & 15!"
+        time: "PHÂN HIỆU (Chiều 15:10 – 17:00 | Hoặc tách sang sáng hôm sau 07:30 – 10:30 cho thong thả)",
+        location: "Lớp học → Phòng Âm nhạc → Hành lang → Sân ra chơi → Cây Tiếng Anh → Sân tập thể",
+        scenes: "⑭ PC 11 ⭐ Tiết học trò chơi (Cô Lan, Cô Lam • 15:10) → ⑮ PC 14 ⭐ Âm nhạc (Cô Phương • 15:30) → ⑯ PC 06 ⭐ Passport (Cô Lan, Cô Lam • 15:50) → ⑰ PC 12 Ra chơi (Cô Lan, Cô Lam • 16:05) → ⑱ PC 05 ⭐ Tree (Cô Lan, Cô Lam • 16:20) → ⑲ PC 03 Chào cờ/tập thể + KẾT nửa Phân hiệu (Cô Lan, Cô Lam, Cô Hạnh, Cô Tần • 16:35)",
+        tip: "Không cần quay riêng MC cố định — mỗi cảnh học sinh của đúng cô phụ trách nói tự nhiên! Dặn Cô Lan, Cô Lam & Cô Phương xếp sẵn lớp từ 15:00 để chạy liên hoàn kịp trước 17:00."
       }
     ]
   },
@@ -258,7 +258,7 @@ window.SHOTBOOK_DATA = {
           prompt: "Cinematic documentary gimbal tracking shot pulling backward smoothly at eye level (1.1m height), shot on Sony ZV-E10 with Sigma 18-50mm lens at 24mm f/5.6, bright natural morning sunlight. Two cheerful 9-year-old Vietnamese primary school students wearing crisp white collared school shirts, red pioneer scarves, and colorful backpacks walk joyfully through a sunlit Vietnamese public primary school gate lined with lush green trees. Warm golden morning flare, smiling teacher greeting students in soft background bokeh, natural realistic colors, smooth DJI RS 4 Mini stabilizer motion, 16:9."
         },
         {
-          label: "Cú máy 2: MC dẫn chuyện đứng giữa khung (Chuẩn bị Split Screen)",
+          label: "Cú máy 2: Học sinh chào mở đầu đứng giữa khung (Chuẩn bị Split Screen)",
           motionVi: "RS 4 Mini khóa tĩnh (Lock) hoặc đẩy rất nhẹ, học sinh đứng chính giữa khung hình ở tiêu cự 28mm f/4 (trong bóng râm nhẹ) nhìn thẳng ống kính nói tự tin, sân trường phía sau xóa phông mềm.",
           prompt: "Steady medium close-up shot with subtle slow gimbal push-in, centered framing leaving balanced left and right space for split-screen editing. A confident smiling 9-year-old Vietnamese primary school student in a white school shirt and red scarf stands in soft open shade speaking enthusiastically directly into the camera in a sunny Vietnamese school courtyard. Pleasant f/4 shallow depth of field, bright natural daylight, authentic documentary look on Sony ZV-E10 Sigma 28mm, 16:9."
         }
@@ -486,7 +486,7 @@ window.SHOTBOOK_DATA = {
           id: "s5-1",
           campus: "Cả 2 cơ sở",
           framing: "Trung rộng (Sigma 24mm • f/3.5)",
-          move: "RS 4 Mini kéo nhẹ Joystick Tilt-down từ tán cây nhiều lá màu xuống 2 bạn MC",
+          move: "RS 4 Mini kéo nhẹ Joystick Tilt-down từ tán cây nhiều lá màu xuống các bạn học sinh",
           desc: "Giới thiệu cây xanh phủ đầy lá giấy rực rỡ. Student A và Student B lần lượt dẫn chuyện giới thiệu ý nghĩa của cây."
         },
         {
@@ -501,7 +501,7 @@ window.SHOTBOOK_DATA = {
           campus: "Cả 2 cơ sở (Đan xen nhanh)",
           framing: "Chân dung cận mặt (Sigma 50mm • f/2.8)",
           move: "RS 4 Mini giữ cò Lock tĩnh",
-          desc: "6 học sinh khác nhau lần lượt cầm chiếc lá ngang vai, mỉm cười nhìn máy đọc to từng thông điệp ngắn. Kết cảnh 2 MC cùng gắn chiếc lá cuối."
+          desc: "6 học sinh khác nhau lần lượt cầm chiếc lá ngang vai, mỉm cười nhìn máy đọc to từng thông điệp ngắn. Kết cảnh các bạn học sinh cùng gắn chiếc lá cuối."
         }
       ],
       dialogue: [
@@ -737,7 +737,7 @@ window.SHOTBOOK_DATA = {
       gimbalMode: "RS 4 Mini: Gạt PTF (ngước lên bậc thang) & PF đi song song",
       gimbalIcon: "tilt-reveal",
       connectionType: "Match Cut bước chân cầu thang 2 cơ sở",
-      connectionTip: "Cảnh này ngắn (25 giây) nhưng nhịp rất vui! Vặn Sigma về **18mm**, quay cận đôi giày bước lên bậc thang có dán khẩu hiệu tiếng Anh ở Điểm chính → cắt khớp đúng bước chân đi lên ở Phân hiệu! Lời thoại 2 MC đọc dạng Voice-over đè lên hình sẽ cực mượt.",
+      connectionTip: "Cảnh này ngắn (25 giây) nhưng nhịp rất vui! Vặn Sigma về **18mm**, quay cận đôi giày bước lên bậc thang có dán khẩu hiệu tiếng Anh ở Điểm chính → cắt khớp đúng bước chân đi lên ở Phân hiệu! Lời thoại các bạn học sinh đọc dạng Voice-over đè lên hình sẽ cực mượt.",
       beginnerTip: "Đi trên cầu thang rất dễ bị nhấp nhô lên xuống: Chuyển ZV-E10 sang **1080p 50fps** + **Sigma 18mm** (góc rộng giảm cảm giác rung cực tốt!), về dựng làm chậm nhẹ 80% là mượt như trượt ray! Để an toàn, quay từ **chiếu nghỉ trên cao nhìn xuống** hoặc đi song song lan can, KHÔNG tự đi giật lùi trên bậc thang mà không có người đỡ!",
       shots: [
         {
@@ -1156,12 +1156,12 @@ window.SHOTBOOK_DATA = {
       needsSlowMo: true,
       needsLight: false,
       lightStatus: "Tắt đèn (Nắng sáng hoặc chiều đẹp rực rỡ)",
-      zve10Config: "Sigma 18mm rộng nhất (đội hình tập thể, f/7.1) & 28mm (lời kết 2 MC, f/4) • 4K 25p & 1080p 50p • SteadyShot OFF",
+      zve10Config: "Sigma 18mm rộng nhất (đội hình tập thể, f/7.1) & 28mm (lời kết các bạn học sinh, f/4) • 4K 25p & 1080p 50p • SteadyShot OFF",
       gimbalMode: "RS 4 Mini: Giữ cò Lock (Split Screen) → Đi lùi nâng cao RS 4 Mini giả lập Flycam!",
       gimbalIcon: "pull-out",
       connectionType: "Split Screen 2 điểm trường + Montage highlight 15 hoạt động",
       connectionTip: "Cảnh kết tạo cảm xúc vỡ òa: Cho Student A đứng giữa sân Điểm chính, Student B đứng giữa sân Phân hiệu — phía sau là thầy cô và học sinh xếp hình vòng cung! Quay bằng **Sigma 18mm** đi lùi đồng thời nâng cao RS 4 Mini lên trên đầu khi cả trường vẫy tay, về ghép đôi màn hình và chạy chữ kết!",
-      beginnerTip: "Xếp đội hình tập thể: Các bé thấp đứng trước, thầy cô và học sinh cao đứng vòng cung phía sau để KHÔNG ai bị che mặt! Tắt SteadyShot để tận dụng hết góc **18mm** của Sigma (khép khẩu **f/7.1** để từ 2 bạn MC phía trước đến toàn thể thầy cô phía sau đều rõ nét!), đi lùi 5–6 bước và từ từ giơ cao RS 4 Mini qua đầu (nhớ bấm giữ cò Lock hoặc hơi chúi nhẹ bằng Joystick) — tạo hiệu ứng mini flycam cực hoành tráng!",
+      beginnerTip: "Xếp đội hình tập thể: Các bé thấp đứng trước, thầy cô và học sinh cao đứng vòng cung phía sau để KHÔNG ai bị che mặt! Tắt SteadyShot để tận dụng hết góc **18mm** của Sigma (khép khẩu **f/7.1** để từ các bạn học sinh phía trước đến toàn thể thầy cô phía sau đều rõ nét!), đi lùi 5–6 bước và từ từ giơ cao RS 4 Mini qua đầu (nhớ bấm giữ cò Lock hoặc hơi chúi nhẹ bằng Joystick) — tạo hiệu ứng mini flycam cực hoành tráng!",
       shots: [
         {
           id: "s16-1",
@@ -1189,14 +1189,14 @@ window.SHOTBOOK_DATA = {
         { speaker: "Student A (Điểm chính)", text: "\"At Dai Mo Primary School, we learn with joy, confidence and creativity.\"" },
         { speaker: "Student B (Phân hiệu)", text: "\"We speak English, share ideas and make wonderful memories every day.\"" },
         { speaker: "Student A → Student B", text: "\"Two campuses...\" — \"One big family!\"" },
-        { speaker: "Cả 2 MC (Split Screen)", text: "\"One happy school! One English journey!\"" },
+        { speaker: "Cả các bạn học sinh (Split Screen)", text: "\"One happy school! One English journey!\"" },
         { speaker: "Tập thể toàn trường", text: "\"We love Dai Mo Primary School! English is our second language. Let's learn and grow together!\"" },
         { speaker: "Chữ kết thúc trên màn hình", text: "DAI MO PRIMARY SCHOOL — HAPPY SCHOOL – ENGLISH EVERY DAY! — TWO CAMPUSES – ONE BIG FAMILY – ONE ENGLISH JOURNEY", isCaption: true }
       ],
       aiPrompts: [
         {
           label: "Cú máy kết: Giả lập Flycam lùi rộng & nâng cao RS 4 Mini toàn thể thầy trò vẫy chào",
-          motionVi: "RS 4 Mini đặt tiêu cự rộng nhất 18mm f/7.1, đi lùi đều ra xa đồng thời từ từ nâng cao tay cầm gimbal lên qua đầu (hiệu ứng mini crane/drone) mở rộng thấy 2 MC phía trước và hàng chục thầy cô, học sinh phía sau đồng loạt vẫy tay rạng rỡ.",
+          motionVi: "RS 4 Mini đặt tiêu cự rộng nhất 18mm f/7.1, đi lùi đều ra xa đồng thời từ từ nâng cao tay cầm gimbal lên qua đầu (hiệu ứng mini crane/drone) mở rộng thấy các bạn học sinh phía trước và hàng chục thầy cô, học sinh phía sau đồng loạt vẫy tay rạng rỡ.",
           prompt: "Inspiring cinematic finale DJI RS 4 Mini gimbal shot pulling backward steadily while rising smoothly upward like a mini jib crane in a sunlit Vietnamese primary school courtyard. Two beaming 9-year-old Vietnamese student hosts (a boy and a girl in white uniforms and red scarves) stand proudly in the center foreground waving happily, revealing a warm semicircle of smiling Vietnamese teachers and dozens of joyful primary students waving enthusiastically behind them. Golden uplifting morning sunlight, deep crisp focus across the crowd at f/7.1, vibrant natural colors, Sony ZV-E10 Sigma 18mm wide shot, 16:9."
         }
       ]

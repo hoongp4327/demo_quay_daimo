@@ -3,6 +3,7 @@
 
   const DATA = window.SHOTBOOK_DATA;
   const EXTRA_SHOTS = window.EXTRA_SHOTS || [];
+  const SPECIAL_SCENES = window.SPECIAL_SCENES || [];
   const STORAGE_KEY = "daimo_shotbook_done_v1";
 
   function getExtraShot(sceneId) {
@@ -462,6 +463,70 @@
     `;
   }
 
+  // ==================== RENDER R5 & OIC SPECIAL SCENES ====================
+  function renderSpecialScenes() {
+    const container = document.getElementById("specialScenesContainer");
+    if (!container) return;
+
+    container.innerHTML = SPECIAL_SCENES.map((sp) => {
+      const vfId = `vf-sp-${sp.id}`;
+      return `
+        <article class="detail-card is-highlight">
+          <div class="detail-header">
+            <div class="detail-title-wrap">
+              <div class="detail-badges">
+                <span class="badge ${sp.badgeColor}">${escapeHtml(sp.code)}</span>
+                <span class="badge badge-amber">📅 ${escapeHtml(sp.schedule)}</span>
+              </div>
+              <h3>${escapeHtml(sp.title)}</h3>
+              <p>${escapeHtml(sp.purpose)}</p>
+            </div>
+          </div>
+          <div class="detail-grid">
+            <div>
+              <div class="viewfinder-box" id="${vfId}">
+                <img src="${sp.image}" alt="Ảnh demo ${escapeHtml(sp.title)}" class="viewfinder-img" loading="lazy" />
+                <div class="vf-grid-overlay">
+                  <div class="vf-hud-top">
+                    <span class="vf-rec"><span class="vf-rec-dot"></span> REC • ZV-E10</span>
+                    <span>Sigma 18-50 f/2.8</span>
+                  </div>
+                  <div class="vf-hud-bottom">Vùng chừa phụ đề song ngữ Anh – Việt</div>
+                </div>
+                <div class="vf-motion-badge">🕹️ ${escapeHtml(sp.gimbalSpec)}</div>
+              </div>
+              <div class="vf-controls">
+                <button type="button" class="vf-toggle-btn" data-vf-toggle="show-grid" data-vf-target="${vfId}">
+                  ⊞ Bật lưới 3x3 &amp; Vùng phụ đề
+                </button>
+              </div>
+            </div>
+            <div>
+              <div class="tech-stack" style="margin-top: 0;">
+                <div class="tech-row">
+                  <strong>⚙️ Tiêu cự &amp; Khẩu độ Sigma 18-50mm f/2.8</strong>
+                  ${escapeHtml(sp.cameraSpec)}
+                </div>
+                <div class="tech-row">
+                  <strong>🕹️ Thao tác DJI RS 4 Mini</strong>
+                  ${escapeHtml(sp.gimbalSpec)}
+                </div>
+                <div class="tech-row">
+                  <strong>💡 Đèn LED nhỏ &amp; Âm thanh</strong>
+                  ${escapeHtml(sp.lightSpec)}
+                </div>
+                <div class="tech-row tip-connect">
+                  <strong>🗣️ Lời bình VO / Thoại tiếng Anh chuẩn</strong>
+                  ${escapeHtml(sp.voText)}
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      `;
+    }).join("");
+  }
+
   // ==================== RENDER EXTRA (MISSING) SHOTS TAB ====================
   function renderExtraShots() {
     const container = document.getElementById("extraShotsContainer");
@@ -822,30 +887,28 @@
 
     // Compiled Demo Video version switcher
     const vidPlayer = document.getElementById("compiledDemoPlayer");
+    const btnVidMaster = document.getElementById("btnVidMaster");
     const btnVidGuide = document.getElementById("btnVidGuide");
     const btnVidClean = document.getElementById("btnVidClean");
-    if (vidPlayer && btnVidGuide && btnVidClean) {
-      const switchDemoVideo = (src, activeBtn, otherBtn) => {
+    if (vidPlayer && btnVidMaster && btnVidGuide && btnVidClean) {
+      const allVidBtns = [btnVidMaster, btnVidGuide, btnVidClean];
+      const switchDemoVideo = (src, activeBtn) => {
         const wasPlaying = !vidPlayer.paused;
-        const t = vidPlayer.currentTime || 0;
         vidPlayer.src = src;
         vidPlayer.load();
-        vidPlayer.addEventListener(
-          "loadedmetadata",
-          () => {
-            if (t > 0 && t < vidPlayer.duration) vidPlayer.currentTime = t;
-            if (wasPlaying) vidPlayer.play().catch(() => {});
-          },
-          { once: true }
-        );
-        activeBtn.classList.add("active");
-        otherBtn.classList.remove("active");
+        if (wasPlaying) {
+          vidPlayer.addEventListener("loadedmetadata", () => vidPlayer.play().catch(() => {}), { once: true });
+        }
+        allVidBtns.forEach((b) => b.classList.toggle("active", b === activeBtn));
       };
+      btnVidMaster.addEventListener("click", () =>
+        switchDemoVideo("./DaiMo_MASTER_4Khuc_CoLoiBinhEN.mp4", btnVidMaster)
+      );
       btnVidGuide.addEventListener("click", () =>
-        switchDemoVideo("./DaiMo_FULL_32Canh_HuongDanQuay.mp4", btnVidGuide, btnVidClean)
+        switchDemoVideo("./DaiMo_FULL_32Canh_HuongDanQuay.mp4", btnVidGuide)
       );
       btnVidClean.addEventListener("click", () =>
-        switchDemoVideo("./DaiMo_FULL_32Canh_Sach.mp4", btnVidClean, btnVidGuide)
+        switchDemoVideo("./DaiMo_FULL_32Canh_Sach.mp4", btnVidClean)
       );
     }
 
@@ -994,6 +1057,7 @@
     renderGearGuide();
     renderConnectionGuide();
     renderScenes();
+    renderSpecialScenes();
     renderExtraShots();
     renderChecklist();
     updateProgressUI();
