@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Đại Mỗ Shotbook — Storyboard & Hướng Dẫn Quay (ZV-E10 • Sigma 18-50 f2.8 • RS 4 Mini)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <!-- Top Sticky Navigation -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="brand-badge" aria-hidden="true">🎬</div>
+        <div>
+          <h1 class="brand-title">ĐẠI MỖ SHOTBOOK</h1>
+          <p class="brand-sub">Sony ZV-E10 • Sigma 18-50mm f/2.8 • DJI RS 4 Mini • 1 Đèn LED nhỏ</p>
+        </div>
+      </div>
+
+      <div class="topbar-actions">
+        <div class="progress-pill" title="Tiến độ các cú máy đã quay">
+          <div class="progress-text">
+            <span>Tiến độ:</span>
+            <strong id="globalProgressText">0 / 0 cú máy</strong>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="globalProgressFill" style="width: 0%"></div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-outline btn-sm" id="printBtn" title="In sổ tay hoặc lưu PDF">
+          🖨️ In sổ tay
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Tab Navigation -->
+    <nav class="nav-tabs-wrap" aria-label="Điều hướng chính">
+      <div class="container nav-tabs" role="tablist">
+        <button class="nav-tab active" data-tab="storyboard" role="tab" aria-selected="true">
+          🎬 16 Phân cảnh chính
+        </button>
+        <button class="nav-tab" data-tab="missing" role="tab" aria-selected="false">
+          ➕ 16 Cảnh bổ sung &amp; Prompt
+        </button>
+        <button class="nav-tab" data-tab="gear" role="tab" aria-selected="false">
+          📷 Cài đặt ZV-E10, Sigma 18-50 &amp; RS 4 Mini
+        </button>
+        <button class="nav-tab" data-tab="connection" role="tab" aria-selected="false">
+          🔗 Nối 2 Điểm trường &amp; Lịch quay
+        </button>
+        <button class="nav-tab" data-tab="checklist" role="tab" aria-selected="false">
+          ✅ Checklist ngày quay
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container main-content">
+    <!-- ==================== TAB 1: STORYBOARD & PROMPTS ==================== -->
+    <section id="tab-storyboard" class="tab-panel active">
+      <!-- Hero / Beginner Quick Banner -->
+      <div class="hero-card">
+        <div class="hero-left">
+          <div class="hero-eyebrow">TRƯỜNG TIỂU HỌC ĐẠI MỖ • THỜI LƯỢNG DỰ KIẾN 10 PHÚT 30 GIÂY</div>
+          <h2 class="hero-title">ĐẠI MỖ – HAPPY SCHOOL, ENGLISH EVERY DAY</h2>
+          <p class="hero-desc">
+            Thiết kế riêng cho bộ máy của bạn: <strong>Sony ZV-E10 + Sigma 18-50mm f/2.8 + DJI RS 4 Mini + 1 Đèn LED nhỏ</strong>.
+            Xem trước <strong>16 ảnh demo góc máy</strong>, thông số tiêu cự/khẩu độ chuẩn cho từng cảnh và
+            <strong>Prompt tạo video AI</strong> (Veo / Kling / Runway / Sora) để hình dung rõ trước khi bấm máy.
+          </p>
+          <div class="hero-quick-rules">
+            <div class="quick-rule">
+              <span class="qr-icon">⚖️</span>
+              <span><strong>Mẹo cân Sigma 18-50 trên RS 4 Mini:</strong> Vặn lens về mốc <strong>~30mm</strong> rồi cân + Auto Tune → xoay zoom 18–50mm cả buổi không cần cân lại!</span>
+            </div>
+            <div class="quick-rule">
+              <span class="qr-icon">☀️</span>
+              <span><strong>Quy tắc khẩu f/2.8:</strong> Trong lớp/bóng râm mở <strong>f/2.8–f/4</strong> siêu sáng đẹp • Ra sân nắng (không ND) khép <strong>f/5.6–f/8</strong> tránh cháy sáng!</span>
+            </div>
+            <div class="quick-rule">
+              <span class="qr-icon">🕹️</span>
+              <span><strong>3 nút RS 4 Mini:</strong> Gạt sẵn <strong>PF</strong> • Muốn khóa thẳng/trượt ngang thì <strong>bóp giữ cò sau</strong> • Lệch máy thì <strong>bấm đúp cò</strong> • Tắt SteadyShot trên ZV-E10!</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-box">
+            <div class="stat-num">32</div>
+            <div class="stat-label">Ảnh demo (16 chính + 16 bổ sung)</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">10:30</div>
+            <div class="stat-label">Tổng thời lượng</div>
+          </div>
+          <div class="stat-box highlight-box">
+            <div class="stat-num">5 ⭐</div>
+            <div class="stat-label">Cảnh điểm nhấn</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">49</div>
+            <div class="stat-label">Cú máy checklist</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Compiled 32-Shot AI Demo Video Player -->
+      <div class="card-block" style="margin-bottom: 20px; padding: 18px 20px;">
+        <div class="card-block-head" style="margin-bottom: 12px;">
+          <div>
+            <h3>🎞️ Video Demo Hoàn Chỉnh Đủ 32 Cú Máy / 16 Phân Cảnh (Google Flow Veo 3.1)</h3>
+            <p style="margin: 3px 0 0; font-size: 0.84rem; color: #64748b;">Ghép liền mạch trọn bộ 32 cú máy (~2 phút 23 giây) theo đúng mạch phim từ cổng trường đến đại cảnh Split Screen kết thúc.</p>
+          </div>
+          <div class="view-toggle" role="group" aria-label="Chọn bản video demo">
+            <button type="button" class="view-btn active" id="btnVidGuide">🎯 Bản 32 cảnh (Có thông số quay)</button>
+            <button type="button" class="view-btn" id="btnVidClean">✨ Bản 32 cảnh (Sạch trình chiếu)</button>
+          </div>
+        </div>
+        <div style="border-radius: 14px; overflow: hidden; background: #0f172a; box-shadow: 0 8px 24px -6px rgba(15,23,42,0.25);">
+          <video id="compiledDemoPlayer" controls preload="metadata" poster="./images/scene-01.jpg" style="width: 100%; max-height: 540px; display: block;">
+            <source src="./DaiMo_FULL_32Canh_HuongDanQuay.mp4" type="video/mp4" />
+            Trình duyệt của bạn không hỗ trợ phát video HTML5.
+          </video>
+        </div>
+      </div>
+
+      <!-- Filter & View Mode Toolbar -->
+      <div class="toolbar">
+        <div class="search-wrap">
+          <span class="search-icon">🔍</span>
+          <input
+            type="search"
+            id="sceneSearch"
+            class="search-input"
+            placeholder="Tìm cảnh, lời thoại, thiết bị (vd: Passport, thư viện, bóng rổ, match cut)..."
+          />
+        </div>
+
+        <div class="view-toggle" role="group" aria-label="Chế độ xem">
+          <button type="button" class="view-btn active" data-view="grid" id="btnViewGrid">
+            🖼️ Lưới tổng quan
+          </button>
+          <button type="button" class="view-btn" data-view="detail" id="btnViewDetail">
+            📋 Xem đầy đủ + Prompt
+          </button>
+        </div>
+      </div>
+
+      <div class="filter-pills" id="filterPills">
+        <button type="button" class="pill active" data-filter="all">Tất cả (16)</button>
+        <button type="button" class="pill pill-star" data-filter="highlight">⭐ Điểm nhấn cần đầu tư (5)</button>
+        <button type="button" class="pill pill-sun" data-filter="outdoor">☀️ Ngoài trời – Tắt đèn (8)</button>
+        <button type="button" class="pill pill-light" data-filter="indoor">💡 Trong nhà – Bật đèn nhỏ (8)</button>
+        <button type="button" class="pill pill-slow" data-filter="slowmo">🐢 Có Slow-mo 50fps</button>
+        <button type="button" class="pill pill-todo" data-filter="remaining">⏳ Chưa quay xong</button>
+      </div>
+
+      <!-- Scene Grid / Detailed Stream Container -->
+      <div id="scenesContainer" class="scenes-grid"></div>
+    </section>
+
+    <!-- ==================== TAB 1B: 16 SUPPLEMENTAL / MISSING SHOTS ==================== -->
+    <section id="tab-missing" class="tab-panel">
+      <div class="section-header">
+        <h2>➕ 16 Ảnh Demo &amp; Prompt Bổ Sung (Các cảnh còn thiếu so với video 72s)</h2>
+        <p>Bộ ảnh mô phỏng trực quan những khoảnh khắc quan trọng còn thiếu (Split Screen 2 MC, viết lá English Tree, trao giải English Passport, bỏ pin cũ, cận khay cơm trước khi ăn, Little Music Star, chụm tay bóng rổ…) — kèm sẵn Prompt Google Flow Veo 3.1 để bạn xem tổng thể đủ <strong>32 góc máy</strong> trước khi bấm máy ngày mai!</p>
+      </div>
+      <div id="extraShotsContainer" class="scenes-stream"></div>
+    </section>
+
+    <!-- ==================== TAB 2: GEAR & SETTINGS GUIDE ==================== -->
+    <section id="tab-gear" class="tab-panel">
+      <div class="section-header">
+        <h2>📷 Sổ tay cài đặt nhanh cho người nghiệp dư</h2>
+        <p>Tối ưu riêng cho bộ thiết bị của bạn: <strong>Sony ZV-E10 + Sigma 18-50mm f/2.8 + DJI RS 4 Mini + 1 Đèn LED nhỏ</strong> (~633g tổng trọng lượng, RS 4 Mini gánh cực nhẹ!).</p>
+      </div>
+
+      <!-- 5 Golden Rules -->
+      <div class="card-block golden-block">
+        <div class="card-block-head">
+          <h3>🏆 5 Nguyên tắc vàng cho combo ZV-E10 + Sigma 18-50mm f/2.8 + RS 4 Mini</h3>
+        </div>
+        <ol class="golden-list" id="goldenRulesList"></ol>
+      </div>
+
+      <!-- Sony ZV-E10 Menu Settings -->
+      <div class="card-block">
+        <div class="card-block-head">
+          <h3>⚙️ Cài đặt ZV-E10, Sigma 18-50mm f/2.8 &amp; Kết nối RS 4 Mini</h3>
+          <span class="badge badge-blue">Chỉnh 1 lần dùng cả ngày</span>
+        </div>
+        <div class="settings-grid" id="zve10SettingsGrid"></div>
+      </div>
+
+      <!-- Gimbal Movements with SVG Diagrams -->
+      <div class="card-block">
+        <div class="card-block-head">
+          <h3>🕹️ 6 Động tác trên DJI RS 4 Mini (Có sơ đồ hướng di chuyển)</h3>
+          <span class="badge badge-violet">85% cảnh chỉ cần gạt PF + Bóp giữ cò Lock</span>
+        </div>
+        <div class="ninja-tip">
+          <strong>👟 Mẹo cầm DJI RS 4 Mini siêu êm:</strong> Bấm nối Bluetooth để bấm nút <strong>REC đỏ ngay trên tay cầm</strong>. Gập nhẹ 2 gối đi bước nhỏ <em>gót trước – mũi sau</em>. Cần quay thấp ngang tầm mắt học sinh (~1.1m) hãy giữ máy ngang bụng hoặc lắp <strong>Briefcase Handle (tay cầm xách)</strong> — cực đỡ mỏi lưng cả ngày!
+        </div>
+        <div class="gimbal-grid" id="gimbalMovesGrid"></div>
+      </div>
+
+      <!-- Mini LED Light Guide -->
+      <div class="card-block">
+        <div class="card-block-head">
+          <h3>💡 Cách dùng 1 Đèn LED nhỏ đúng cách (Khi nào BẬT – Khi nào TẮT)</h3>
+          <span class="badge badge-amber">Luôn gắn tấm tản sáng mềm (diffuser)</span>
+        </div>
+        <div class="light-layout">
+          <div class="light-diagram-box">
+            <svg viewBox="0 0 360 220" class="diagram-svg" role="img" aria-label="Sơ đồ đặt đèn LED góc 45 độ">
+              <rect x="0" y="0" width="360" height="220" rx="14" fill="#F8FAFC" stroke="#E2E8F0" />
+              <!-- Window on left -->
+              <rect x="14" y="42" width="12" height="110" rx="4" fill="#BAE6FD" stroke="#0284C7" stroke-width="2" />
+              <text x="34" y="100" font-size="11" fill="#0369A1" font-weight="700">Cửa sổ lớp</text>
+              <!-- Light rays from window -->
+              <path d="M 32 70 L 145 86" stroke="#7DD3FC" stroke-width="2" stroke-dasharray="4 4" />
+              <path d="M 32 115 L 145 100" stroke="#7DD3FC" stroke-width="2" stroke-dasharray="4 4" />
+              <!-- Student / Subject -->
+              <circle cx="180" cy="86" r="24" fill="#FEF3C7" stroke="#D97706" stroke-width="2.5" />
+              <text x="180" y="90" text-anchor="middle" font-size="12" font-weight="700" fill="#92400E">Học sinh</text>
+              <text x="180" y="54" text-anchor="middle" font-size="10" fill="#64748B">Hậu cảnh lớp học (cách xa &gt; 2m)</text>
+              <!-- Camera + Gimbal -->
+              <rect x="148" y="164" width="64" height="32" rx="7" fill="#1D4ED8" />
+              <text x="180" y="184" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">ZV-E10</text>
+              <path d="M 180 162 L 180 116" stroke="#1D4ED8" stroke-width="2" marker-end="url(#arrowBlue)" />
+              <!-- Small LED Light at 45 deg -->
+              <g transform="translate(268, 134)">
+                <rect x="-24" y="-15" width="48" height="30" rx="6" fill="#F59E0B" stroke="#B45309" stroke-width="2" />
+                <text x="0" y="4" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">Đèn LED</text>
+              </g>
+              <path d="M 244 124 L 204 100" stroke="#F59E0B" stroke-width="2.5" stroke-dasharray="5 3" marker-end="url(#arrowAmber)" />
+              <text x="274" y="166" text-anchor="middle" font-size="11" font-weight="700" fill="#B45309">Góc chếch 45°</text>
+              <text x="274" y="180" text-anchor="middle" font-size="10" fill="#64748B">25–40% • 5500K</text>
+              <defs>
+                <marker id="arrowBlue" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                  <path d="M0,0 L8,4 L0,8 Z" fill="#1D4ED8" />
+                </marker>
+                <marker id="arrowAmber" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                  <path d="M0,0 L8,4 L0,8 Z" fill="#F59E0B" />
+                </marker>
+              </defs>
+            </svg>
+            <p class="diagram-caption">
+              Mẹo: Không để học sinh đứng quay lưng vào cửa sổ sáng gắt. Đặt đèn LED nhỏ chếch 45° phía trên-bên mặt bé (cách 1–1.5m) để mặt sáng tự nhiên, mắt long lanh!
+            </p>
+          </div>
+          <div class="light-rules-list" id="lightRulesList"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 3: TWO CAMPUSES CONNECTION & SCHEDULE ==================== -->
+    <section id="tab-connection" class="tab-panel">
+      <div class="section-header">
+        <h2>🔗 Bí kíp quay nối Điểm chính &amp; Phân hiệu thành 1 thể thống nhất</h2>
+        <p>Thay vì quay xong hết Điểm chính rồi mới chuyển sang Phân hiệu, hãy quay theo cặp hoạt động đối xứng để dựng đan xen đầy cảm xúc.</p>
+      </div>
+
+      <!-- 5 Techniques -->
+      <div class="card-block">
+        <div class="card-block-head">
+          <h3>✨ 5 Kỹ thuật quay &amp; dựng nối 2 điểm trường</h3>
+        </div>
+        <div class="techniques-grid" id="techniquesGrid"></div>
+      </div>
+
+      <!-- Smart Shooting Order by Time & Light -->
+      <div class="card-block">
+        <div class="card-block-head">
+          <h3>🗓️ Thứ tự gom cảnh gợi ý trong 1 ngày quay (Theo ánh sáng thực tế)</h3>
+          <span class="badge badge-green">Tiết kiệm 50% sức chạy đi chạy lại</span>
+        </div>
+        <p class="block-intro">
+          Đừng quay tuần tự từ Cảnh 1 đến Cảnh 16! Hãy gom theo <strong>khung giờ ánh sáng đẹp &amp; địa điểm gần nhau</strong> (áp dụng y hệt cho 1 ngày ở Điểm chính và 1 ngày ở Phân hiệu):
+        </p>
+        <div class="schedule-list" id="scheduleList"></div>
+      </div>
+
+      <!-- Duration Breakdown Table -->
+      <div class="card-block">
+        <div class="card-block-head">
+          <h3>⏱️ Bảng phân bổ thời lượng toàn video (10 phút 30 giây)</h3>
+          <span class="badge badge-blue">Bấm vào từng dòng để xem chi tiết cảnh</span>
+        </div>
+        <div class="table-wrap">
+          <table class="duration-table">
+            <thead>
+              <tr>
+                <th>Cảnh</th>
+                <th>Nội dung</th>
+                <th>Thời lượng</th>
+                <th>Môi trường &amp; Đèn</th>
+                <th>Kỹ thuật nối 2 cơ sở</th>
+              </tr>
+            </thead>
+            <tbody id="durationTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 4: SHOOTING DAY CHECKLIST ==================== -->
+    <section id="tab-checklist" class="tab-panel">
+      <div class="section-header checklist-header">
+        <div>
+          <h2>✅ Checklist cầm tay ngày đi quay</h2>
+          <p>Tích chọn từng cú máy đã quay xong — tự động lưu trên máy của bạn.</p>
+        </div>
+        <div class="checklist-actions">
+          <div class="checklist-filter">
+            <button type="button" class="pill active" data-clfilter="all">Tất cả</button>
+            <button type="button" class="pill" data-clfilter="todo">Chưa quay</button>
+            <button type="button" class="pill" data-clfilter="done">Đã quay xong</button>
+          </div>
+          <button type="button" class="btn btn-danger-ghost btn-sm" id="resetProgressBtn">↺ Đặt lại tiến độ</button>
+        </div>
+      </div>
+
+      <div class="checklist-summary-bar">
+        <div class="cs-info">
+          <strong id="clDoneCount">0</strong> / <span id="clTotalCount">0</span> cú máy đã hoàn thành (<span id="clPercent">0%</span>)
+        </div>
+        <div class="cs-bar">
+          <div class="cs-bar-fill" id="clBarFill" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <div id="checklistContainer" class="checklist-groups"></div>
+    </section>
+  </main>
+
+  <!-- ==================== FULL SCENE DETAIL MODAL ==================== -->
+  <div class="modal-backdrop" id="sceneModal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-shell">
+      <div class="modal-topbar">
+        <div class="modal-nav-group">
+          <button type="button" class="btn btn-outline btn-sm" id="modalPrevBtn">← Cảnh trước</button>
+          <span class="modal-counter" id="modalCounter">1 / 16</span>
+          <button type="button" class="btn btn-outline btn-sm" id="modalNextBtn">Cảnh sau →</button>
+        </div>
+        <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="Đóng cửa sổ">✕</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p><strong>Đại Mỗ Shotbook</strong> — Thiết kế riêng cho kịch bản <em>"ĐẠI MỖ – HAPPY SCHOOL, ENGLISH EVERY DAY"</em> • Sony ZV-E10 + Sigma 18-50mm f/2.8 + DJI RS 4 Mini + 1 Đèn LED nhỏ.</p>
+    </div>
+  </footer>
+
+  <script src="./data.js"></script>
+  <script src="./extra-scenes.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
